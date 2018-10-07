@@ -1,0 +1,224 @@
+-- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
+--
+-- Host: localhost    Database: host_policies
+-- ------------------------------------------------------
+-- Server version	5.7.23-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ces_policies`
+--
+
+DROP TABLE IF EXISTS `ces_policies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) DEFAULT NULL,
+  `types` varchar(16) DEFAULT NULL,
+  `policy_element` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`types`,`policy_element`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policies`
+--
+
+LOCK TABLES `ces_policies` WRITE;
+/*!40000 ALTER TABLE `ces_policies` DISABLE KEYS */;
+INSERT INTO `ces_policies` VALUES (26,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"caces\", \"value\":\"195.148.124.145\"}'),(24,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"cesid\", \"value\":\"cesa.lte.\"}'),(32,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"evidence_format\", \"value\":\"IETF-IOC1\"}'),(27,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"fw_version\", \"value\":\"0.1\"}'),(30,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"keepalive\", \"value\":\"\"}'),(29,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"keepalive_cycle\", \"value\":\"60\"}'),(25,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"pow\"}'),(31,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"session_limit\", \"value\": \"200\"}'),(28,'123123123','available','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"ttl\", \"value\":\"7200\"}'),(35,'123123123','available','{ \"ope\":\"info\", \"group\": \"payload\", \"code\": \"eth\" }'),(33,'123123123','available','{ \"ope\":\"info\", \"group\": \"rloc\", \"code\": \"ipv4\" }'),(34,'123123123','available','{ \"ope\":\"info\", \"group\": \"rloc\", \"code\": \"ipv6\" }'),(14,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"caces\", \"value\":\"195.148.124.145\"}'),(13,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"cesid\", \"value\":\"cesa.lte.\"}'),(20,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"evidence_format\", \"value\":\"IETF-IOC1\"}'),(15,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"fw_version\", \"value\":\"0.1\"}'),(18,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"keepalive\", \"value\":\"\"}'),(17,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"keepalive_cycle\", \"value\":\"60\"}'),(19,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"session_limit\", \"value\": \"200\"}'),(16,'123123123','offer','{ \"ope\":\"info\", \"group\": \"ces\", \"code\": \"ttl\", \"value\":\"7200\"}'),(23,'123123123','offer','{ \"ope\":\"info\", \"group\": \"payload\", \"code\": \"eth\" }'),(21,'123123123','offer','{ \"ope\":\"info\", \"group\": \"rloc\", \"code\": \"ipv4\" }'),(22,'123123123','offer','{ \"ope\":\"info\", \"group\": \"rloc\", \"code\": \"ipv6\" }'),(2,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"caces\", \"value\":\"195.148.124.145\"}'),(1,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"cesid\", \"value\":[\"cesb.lte.\", \"cesc.lte.\", \"cesd.lte.\", \"cese.lte.\"]}'),(9,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"evidence_format\", \"value\":[\"IETF-IOC1\", \"IETF-IOC2\"]}'),(3,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"fw_version\", \"value\":\"0.1\"}'),(6,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"keepalive\"}'),(5,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"keepalive_cycle\"}'),(7,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"pow\"}'),(8,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"session_limit\", \"value\": \"300\"}'),(4,'123123123','request','{ \"ope\":\"query\", \"group\": \"ces\", \"code\": \"ttl\", \"value\":{\"min\":\"3600\", \"max\":\"7200\"}}'),(12,'123123123','request','{ \"ope\":\"query\", \"group\": \"payload\", \"code\": \"eth\" }'),(10,'123123123','request','{ \"ope\":\"query\", \"group\": \"rloc\", \"code\": \"ipv4\"}'),(11,'123123123','request','{ \"ope\":\"query\", \"group\": \"rloc\", \"code\": \"ipv6\" }');
+/*!40000 ALTER TABLE `ces_policies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_identity`
+--
+
+DROP TABLE IF EXISTS `ces_policy_identity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_identity` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `host_ces_id` varchar(256) DEFAULT NULL,
+  `protocol` varchar(64) DEFAULT NULL,
+  `uuid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `protocol` (`protocol`,`host_ces_id`,`uuid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_identity`
+--
+
+LOCK TABLES `ces_policy_identity` WRITE;
+/*!40000 ALTER TABLE `ces_policy_identity` DISABLE KEYS */;
+INSERT INTO `ces_policy_identity` VALUES (1,'cesa.lte.','tcp','123123123');
+/*!40000 ALTER TABLE `ces_policy_identity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `firewall_policies`
+--
+
+DROP TABLE IF EXISTS `firewall_policies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `firewall_policies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `types` varchar(32) NOT NULL,
+  `sub_type` varchar(32) NOT NULL,
+  `policy_element` varchar(2048) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`types`,`sub_type`,`policy_element`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `firewall_policies`
+--
+
+LOCK TABLES `firewall_policies` WRITE;
+/*!40000 ALTER TABLE `firewall_policies` DISABLE KEYS */;
+INSERT INTO `firewall_policies` VALUES (3,'45612319784651234427','CARRIERGRADE','','{\"ipv4\": \"192.168.0.10\"}'),(4,'45612319784651234427','CARRIERGRADE','','{\"ipv4\": \"192.168.0.11\"}'),(5,'45612319784651234427','CARRIERGRADE','','{\"ipv4\": \"192.168.0.12\"}'),(6,'45612319784651234427','CARRIERGRADE','','{\"ipv4\": \"192.168.0.13\"}'),(7,'45612319784651234427','CARRIERGRADE','','{\"ipv4\": \"192.168.0.14\"}'),(2,'45612319784651234427','CIRCULARPOOL','','{\"max\": \"100\" }'),(11,'45612319784651234427','FIREWALL','FIREWALL_ADMIN','{\"priority\": 0,   \"direction\": \"EGRESS\", \"protocol\": \"17\", \"udp\":{\"dport\": \"53\"}, \"target\": \"REJECT\", \"hashlimit\": {\"hashlimit-above\":\"5/sec\", \"hashlimit-burst\":\"50\", \"hashlimit-name\":\"DnsLanHosts\", \"hashlimit-mode\":\"srcip\", \"hashlimit-htable-expire\":\"1001\"}, \"comment\":{\"comment\":\"Host DNS limit\"}}'),(12,'45612319784651234427','FIREWALL','FIREWALL_USER','{\"priority\": 100, \"direction\": \"EGRESS\",\"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow outgoing\"}}'),(13,'45612319784651234427','FIREWALL','FIREWALL_USER','{\"priority\": 100, \"direction\": \"INGRESS\",\"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming\"}}'),(1,'45612319784651234427','GROUP','','IPS_GROUP_POSTPAID'),(8,'45612319784651234427','SFQDN','','{\"fqdn\":\"nest0.gwa.demo.\",  \"proxy_required\":false, \"carriergrade\": true}'),(10,'45612319784651234427','SFQDN','','{\"fqdn\":\"sip.nest0.gwa.demo.\",  \"proxy_required\": true , \"carriergrade\": false}'),(9,'45612319784651234427','SFQDN','','{\"fqdn\":\"www.nest0.gwa.demo.\",  \"proxy_required\": true, \"carriergrade\":false}'),(17,'78645135486734154542','CARRIERGRADE','','{\"ipv4\": \"192.168.0.10\"}'),(62,'78645135486734154542','CARRIERGRADE','','{\"ipv4\": \"192.168.0.11\"}'),(63,'78645135486734154542','CARRIERGRADE','','{\"ipv4\": \"192.168.0.12\"}'),(64,'78645135486734154542','CARRIERGRADE','','{\"ipv4\": \"192.168.0.13\"}'),(65,'78645135486734154542','CARRIERGRADE','','{\"ipv4\": \"192.168.0.14\"}'),(66,'78645135486734154542','CIRCULARPOOL','','{\"max\": \"101\"}'),(67,'78645135486734154542','CIRCULARPOOL','','{\"max\": \"102\"}'),(68,'78645135486734154542','CIRCULARPOOL','','{\"max\": \"103\"}'),(32,'78645135486734154542','FIREWALL','FIREWALL_ADMIN','{\"priority\": 0,   \"direction\": \"EGRESS\", \"protocol\": \"17\", \"udp\":{\"dport\": \"53\"}, \"target\": \"REJECT\", \"hashlimit\": {\"hashlimit-above\":\"5/sec\", \"hashlimit-burst\":\"50\", \"hashlimit-name\":\"DnsLanHosts\", \"hashlimit-mode\":\"srcip\", \"hashlimit-htable-expire\":\"1001\"}, \"comment\":{\"comment\":\"Host DNS limit\"}}'),(34,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP\"}}'),(35,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP1\"}}'),(36,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP2\"}}'),(37,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP3\"}}'),(38,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP4\"}}'),(39,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP5\"}}'),(40,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP6\"}}'),(41,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP7\"}}'),(42,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP8\"}}'),(43,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9\"}}'),(44,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9a\"}}'),(45,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9b\"}}'),(46,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9c\"}}'),(47,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9d\"}}'),(48,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9f\"}}'),(49,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9g\"}}'),(50,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9h\"}}'),(51,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9i\"}}'),(52,'78645135486734154542','FIREWALL','FIREWALL_USER','{\"priority\": 10,  \"direction\": \"INGRESS\", \"src\": \"195.148.125.201/32\", \"protocol\": \"1\", \"icmp\":{\"icmp-type\":\"8/0\"}, \"target\": \"ACCEPT\", \"comment\":{\"comment\":\"Allow incoming ICMP9j\"}}'),(14,'78645135486734154542','GROUP','','IPS_GROUP_POSTPAID'),(23,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 0}'),(53,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 1}'),(54,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 2}'),(55,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 3}'),(56,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 4}'),(57,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 5}'),(58,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 6}'),(59,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 7}'),(60,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 8}'),(61,'78645135486734154542','SFQDN','','{\"fqdn\":\"icmp.test.gwa.cesproto.re2ee.org.\", \"proxy_required\": false, \"carriergrade\": false, \"protocol\": 1,\"port\": 9}');
+/*!40000 ALTER TABLE `firewall_policies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_ids`
+--
+
+DROP TABLE IF EXISTS `host_ids`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_ids` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `fqdn` varchar(256) NOT NULL,
+  `msisdn` varchar(16) DEFAULT NULL,
+  `ipv4` varchar(16) DEFAULT NULL,
+  `username` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`fqdn`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `uuid` (`uuid`),
+  UNIQUE KEY `ipv4` (`ipv4`),
+  UNIQUE KEY `msisdn` (`msisdn`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_ids`
+--
+
+LOCK TABLES `host_ids` WRITE;
+/*!40000 ALTER TABLE `host_ids` DISABLE KEYS */;
+INSERT INTO `host_ids` VALUES (1,'45612319784651234427','nest0.gwa.cesproto.re2ee.org.','0000000010','192.168.0.10','jesus_nest'),(2,'78645135486734154542','test.gwa.cesproto.re2ee.org.','0000000100','192.168.0.100','jesus_testgwa');
+/*!40000 ALTER TABLE `host_ids` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_policies`
+--
+
+DROP TABLE IF EXISTS `host_policies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_policies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) DEFAULT NULL,
+  `types` varchar(16) DEFAULT NULL,
+  `policy_element` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`types`,`policy_element`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_policies`
+--
+
+LOCK TABLES `host_policies` WRITE;
+/*!40000 ALTER TABLE `host_policies` DISABLE KEYS */;
+INSERT INTO `host_policies` VALUES (13,'123123123','available','{ \"ope\":\"info\", \"group\": \"control\", \"code\": \"ack\" }'),(12,'123123123','available','{ \"ope\":\"info\", \"group\": \"control\", \"code\": \"caep\", \"value\":\"195.148.124.145\" }'),(9,'123123123','available','{ \"ope\":\"info\", \"group\": \"id\", \"code\": \"fqdn\", \"value\":\"hosta1.cesa.lte.\" }'),(11,'123123123','available','{ \"ope\":\"info\", \"group\": \"payload\", \"code\": \"eth\" }'),(10,'123123123','available','{ \"ope\":\"info\", \"group\": \"rloc\", \"code\": \"ipv4\" }'),(8,'123123123','offer','{ \"ope\":\"info\", \"group\": \"control\", \"code\": \"caep\", \"value\":\"195.148.124.145\" }'),(5,'123123123','offer','{ \"ope\":\"info\", \"group\": \"id\", \"code\": \"fqdn\", \"value\":\"hosta1.cesa.lte.\" }'),(7,'123123123','offer','{ \"ope\":\"info\", \"group\": \"payload\", \"code\": \"eth\" }'),(6,'123123123','offer','{ \"ope\":\"info\", \"group\": \"rloc\", \"code\": \"ipv4\" }'),(4,'123123123','request','{ \"ope\":\"query\", \"group\": \"control\", \"code\": \"caep\" }'),(1,'123123123','request','{ \"ope\":\"query\", \"group\": \"id\", \"code\": \"fqdn\" }'),(3,'123123123','request','{ \"ope\":\"query\", \"group\": \"payload\", \"code\": \"eth\", \"value\":\"\" }'),(2,'123123123','request','{ \"ope\":\"query\", \"group\": \"rloc\", \"code\": \"ipv4\" }');
+/*!40000 ALTER TABLE `host_policies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_policy_identity`
+--
+
+DROP TABLE IF EXISTS `host_policy_identity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_policy_identity` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `reputation` varchar(48) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `uuid` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`reputation`,`direction`,`uuid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_policy_identity`
+--
+
+LOCK TABLES `host_policy_identity` WRITE;
+/*!40000 ALTER TABLE `host_policy_identity` DISABLE KEYS */;
+INSERT INTO `host_policy_identity` VALUES (1,'hosta1.cesa.lte.',NULL,NULL,'EGRESS','123123123');
+/*!40000 ALTER TABLE `host_policy_identity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_policy_ts`
+--
+
+DROP TABLE IF EXISTS `host_policy_ts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_policy_ts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(64) NOT NULL,
+  `policy` varchar(128) NOT NULL,
+  `time_stamp` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`policy`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_policy_ts`
+--
+
+LOCK TABLES `host_policy_ts` WRITE;
+/*!40000 ALTER TABLE `host_policy_ts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_policy_ts` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-09-03 18:13:42

@@ -1,0 +1,145 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{% static 'login_style.css' %}" />
+
+
+
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'main' %}" onclick="{% url 'main' %}"><font color="white"><b>Policy Management CES</b></font></a>
+      <a class="navbar-brand navbar-right" href='#' onclick="window.location.href = '../add_user';"><font color="white">Add New User</font></a>
+    </div>
+
+  </div>
+</nav>
+
+<style>
+@CHARSET "UTF-8";
+/*
+over-ride "Weak" message, show font in dark grey
+*/
+
+.progress-bar {
+    color: #333;
+}
+
+/*
+Reference:
+http://www.bootstrapzen.com/item/135/simple-login-form-logo/
+*/
+
+* {
+    -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+    .form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+body {
+	background: url({% static 'background.jpg' %}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+}
+
+.login-form {
+	margin-top: 60px;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #f2f2f2;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	form[role=login] img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 35px;
+	}
+	form[role=login] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 16px 0;
+	}
+	form[role=login] > div {
+		text-align: center;
+	}
+
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+	.form-links a {
+		color: #fff;
+	}
+</style>
+
+<div class="container">
+
+  <div class="row" id="pwd-container">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      <section class="login-form">
+        <form action="{% url 'captive_portal' %}" method="post" role="login">{% csrf_token %}
+          <h1>Captive Portal</h1>
+            <label><font color="red">{{message}}</font></label>
+          <input type="text" name="username" {{value}} placeholder="Username" required class="form-control input-lg"/>
+          <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Password" required="" />
+
+
+          <div class="pwstrength_viewport_progress"></div>
+
+
+          <button type="submit" class="btn btn-lg btn-primary btn-block" value="activate" name="action" >Activate</button>
+          <button type="submit" class="btn btn-lg btn-primary btn-block" value="deactivate" name="action">De-activate</button>
+          <div>
+            <a href="{% url 'add_user' %}">Create account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href="{% url 'login' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login Page</a>
+          </div>
+
+        </form>
+
+        <div class="form-links">
+          <a href="http://www.re2ee.org/">www.re2ee.org</a>
+        </div>
+      </section>
+      </div>
+
+      <div class="col-md-4"></div>
+
+
+  </div>
+
+  <p>
+    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbootsnipp.com%2Fiframe%2FW00op" target="_blank"><small></small><sup></sup></a>
+    <br>
+    <br>
+
+  </p>
+
+
+</div>

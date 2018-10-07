@@ -1,0 +1,855 @@
+
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('5102117057456247271','special.cesa.lte.','53246734624','1.1.1.19');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('4398467110744101351','raimo_son1.cesa.lte.','762456534254','1.1.1.18');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('3029051148152869351','hosta3.cesa.lte.','65468627563','1.1.1.42');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('1808847932882162151','hosta2.cesa.lte.','7635337546754','1.1.1.47');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('1231848110643483111','srv2.hosta1.cesa.lte.','75645365673','1.1.1.80');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('489017754270306791','srv1.hosta1.cesa.lte.','7654387427356','1.1.1.14');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('9279105046398767591','hosta1.cesa.lte.','405640564056','1.1.1.50');
+**********************************************************;
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('51021172057456247271','hostb1.cesb.lte.','532467624','1.1.1.20');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('510211720574562271','srv1.hostb1.cesb.lte.','5321467624','1.1.1.21');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('5104211720574562271','srv2.hostb1.cesb.lte.','52321434624','1.1.1.22');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('51042115720574562271','hostb2.cesb.lte.','523214334624','1.1.1.23');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('510421157205745627271','hostb3.cesb.lte.','5233217234624','1.1.1.24');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('5104211572057645627271','raimo.cesb.lte.','52332717234624','1.1.1.25');
+insert into host_ids (uuid, fqdn, msisdn, ipv4) values('51042115720857645627271','raimo2.cesb.lte.','523324367234624','1.1.1.26');
+
+
+
+
+
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 5849391047123800551 from host_ids where fqdn='special.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 4662257705642758631 from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 4369226002730717671 from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 2709318810383028711 from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 2348688144752841191 from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 1598597833360544231 from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 1020428190879453671 from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 232380418813989351 from host_ids where fqdn='srv2.hosta1.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 18038572168054903271 from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 15216278531410694631 from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 17559665387357016551 from host_ids where fqdn='hosta1.cesa.lte.';
+**********************************************************;
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 175596653873570116551 from host_ids where fqdn='hostb1.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 17556653873570116551 from host_ids where fqdn='hostb1.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 175566538735701166551 from host_ids where fqdn='srv1.hostb1.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 1755665387735701166551 from host_ids where fqdn='srv2.hostb1.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 1755665387232735701166551 from host_ids where fqdn='hostb2.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 175665387735701166551 from host_ids where fqdn='hostb2.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 175665387701166551 from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 175665389877701166551 from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'EGRESS', 175665389877701222166551 from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 175665389877703336541166551 from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_negotiations (local_fqdn, remote_fqdn, reputation, direction, uid) select distinct fqdn, '*', '*', 'INGRESS', 175667706111541166551 from host_ids where fqdn='raimo2.cesb.lte.';
+
+
+
+
+
+
+
+
+
+
+
+##################################################;
+##################################################;
+##################################################;
+
+#######    CES B Negotiations;
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('5849391047123800551', 'host_cetp_id', 'fqdn', '["raimo_son1.cesa.lte."]');
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('5849391047123800551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('5849391047123800551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('5849391047123800551', 'host_cetp_control_params', 'caep', '["195.148.124.145"]');
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('5849391047123800551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('5849391047123800551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('5849391047123800551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('5849391047123800551', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('5849391047123800551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('5849391047123800551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('5849391047123800551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('5849391047123800551', 'host_cetp_control_params', 'ack');
+insert into host_cetp_policy_available (uid, type, parameter) values ('5849391047123800551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4662257705642758631', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4662257705642758631', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4662257705642758631', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4662257705642758631', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('4662257705642758631', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4662257705642758631', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4662257705642758631', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4662257705642758631', 'host_cetp_control_params', 'caep');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4662257705642758631', 'host_cetp_control_params', 'ack');
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4369226002730717671', 'host_cetp_id', 'fqdn', '["raimo.cesb.lte."]');
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4369226002730717671', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4369226002730717671', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('4369226002730717671', 'host_cetp_control_params', 'caep', '["195.148.124.145"]');
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('4369226002730717671', 'host_cetp_rloc', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('4369226002730717671', 'host_cetp_id', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('4369226002730717671', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('4369226002730717671', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('4369226002730717671', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4369226002730717671', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4369226002730717671', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4369226002730717671', 'host_cetp_control_params', 'ack');
+insert into host_cetp_policy_available (uid, type, parameter) values ('4369226002730717671', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2709318810383028711', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2709318810383028711', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2709318810383028711', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2709318810383028711', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('2709318810383028711', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('2709318810383028711', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('2709318810383028711', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('2709318810383028711', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2348688144752841191', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2348688144752841191', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2348688144752841191', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('2348688144752841191', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('2348688144752841191', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('2348688144752841191', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('2348688144752841191', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('2348688144752841191', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('2348688144752841191', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('2348688144752841191', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('2348688144752841191', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('2348688144752841191', 'host_cetp_control_params', 'ack');
+insert into host_cetp_policy_available (uid, type, parameter) values ('2348688144752841191', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1598597833360544231', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1598597833360544231', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1598597833360544231', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1598597833360544231', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('1598597833360544231', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1598597833360544231', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1598597833360544231', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1598597833360544231', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1020428190879453671', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1020428190879453671', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1020428190879453671', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1020428190879453671', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1020428190879453671', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1020428190879453671', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1020428190879453671', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1020428190879453671', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('1020428190879453671', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1020428190879453671', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1020428190879453671', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1020428190879453671', 'host_cetp_control_params', 'ack');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1020428190879453671', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('232380418813989351', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('232380418813989351', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('232380418813989351', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('232380418813989351', 'host_cetp_control_params', 'caep', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('232380418813989351', 'host_cetp_control_params', 'ack', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('232380418813989351', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('232380418813989351', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('232380418813989351', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('232380418813989351', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('18038572168054903271', 'host_cetp_id', 'fqdn', '["hosta1.cesa.lte.", "hostb1.cesb.lte."]');
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('18038572168054903271', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('18038572168054903271', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('18038572168054903271', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('18038572168054903271', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('18038572168054903271', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('18038572168054903271', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('18038572168054903271', 'host_cetp_control_params', 'caep');
+insert into host_cetp_policy_available (uid, type, parameter) values ('18038572168054903271', 'host_cetp_control_params', 'ack');
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17559665387357016551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17559665387357016551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17559665387357016551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17559665387357016551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('17559665387357016551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('17559665387357016551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('17559665387357016551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('17559665387357016551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('15216278531410694631', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('15216278531410694631', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('15216278531410694631', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('15216278531410694631', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('15216278531410694631', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('15216278531410694631', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('15216278531410694631', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('15216278531410694631', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('15216278531410694631', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('15216278531410694631', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('15216278531410694631', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('15216278531410694631', 'host_cetp_control_params', 'ack');
+insert into host_cetp_policy_available (uid, type, parameter) values ('15216278531410694631', 'host_cetp_control_params', 'caep');
+
+
+
+##################################################;
+##################################################;
+##################################################;
+
+#######    CES A Policies;
+
+
+
+
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'hosta1.cesa.lte.' from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'srv1.hosta1.cesa.lte.' from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'srv2.hosta1.cesa.lte..' from host_ids where fqdn='srv2.hosta1.cesa.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'hosta2.cesa.lte.' from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'hosta3.cesa.lte.' from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'raimo_son1.cesa.lte.' from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'special.cesa.lte.' from host_ids where fqdn='special.cesa.lte.';
+
+
+
+
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='srv2.hosta1.cesa.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='special.cesa.lte.';
+
+
+
+
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.101'  from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.101'  from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.101'  from host_ids where fqdn='srv2.hosta1.cesa.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.101'  from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.101'  from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.101'  from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.101'  from host_ids where fqdn='special.cesa.lte.';
+
+
+
+
+
+
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='special.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='srv2.hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='special.cesa.lte.';
+
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='special.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='srv1.hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='srv2.hosta1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hosta2.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hosta3.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='raimo_son1.cesa.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='special.cesa.lte.';
+
+
+
+
+
+##################################################;
+##################################################;
+##################################################;
+
+
+*********************************************************************************************************************************;
+
+
+#######    CES B Negotiations;
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175596653873570116551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175596653873570116551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175596653873570116551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175596653873570116551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175596653873570116551', 'host_cetp_rloc', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175596653873570116551', 'host_cetp_id', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175596653873570116551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175596653873570116551', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175596653873570116551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175596653873570116551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175596653873570116551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175596653873570116551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17556653873570116551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17556653873570116551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17556653873570116551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('17556653873570116551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('17556653873570116551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('17556653873570116551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('17556653873570116551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('17556653873570116551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175566538735701166551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175566538735701166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175566538735701166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175566538735701166551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175566538735701166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175566538735701166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175566538735701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175566538735701166551', 'host_cetp_control_params', 'caep');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175566538735701166551', 'host_cetp_control_params', 'ack');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387735701166551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387735701166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387735701166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387735701166551', 'host_cetp_control_params', 'caep', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387735701166551', 'host_cetp_control_params', 'ack', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387735701166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387735701166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387735701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387735701166551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387232735701166551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387232735701166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387232735701166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('1755665387232735701166551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_rloc', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_id', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('1755665387232735701166551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387735701166551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387735701166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387735701166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387735701166551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387735701166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387735701166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387735701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387735701166551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387701166551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387701166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387701166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665387701166551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665387701166551', 'host_cetp_rloc', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665387701166551', 'host_cetp_id', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665387701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665387701166551', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387701166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387701166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387701166551', 'host_cetp_control_params', 'caep');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665387701166551', 'host_cetp_control_params', 'ack');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701166551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701166551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701166551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701222166551', 'host_cetp_id', 'fqdn', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701222166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701222166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877701222166551', 'host_cetp_control_params', 'caep', NULL);
+
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_rloc', 'fqdn');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_id', 'ipv4');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_offered (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_control_params', 'caep');
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_control_params', 'caep');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877701222166551', 'host_cetp_control_params', 'ack');
+
+
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877703336541166551', 'host_cetp_id', 'fqdn', '["raimo_son1.cesa.lte.", "raimo_son2.cesa.lte."]');
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877703336541166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877703336541166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877703336541166551', 'host_cetp_control_params', 'caep', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175665389877703336541166551', 'host_cetp_control_params', 'ack', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877703336541166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877703336541166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877703336541166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877703336541166551', 'host_cetp_control_params', 'caep');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175665389877703336541166551', 'host_cetp_control_params', 'ack');
+
+
+
+
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175667706111541166551', 'host_cetp_id', 'fqdn', '["raimo_son1.cesa.lte.", "raimo_son2.cesa.lte."]');
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175667706111541166551', 'host_cetp_rloc', 'ipv4', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175667706111541166551', 'host_cetp_payload', 'eth', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175667706111541166551', 'host_cetp_control_params', 'caep', NULL);
+insert into host_cetp_policy_required (uid, type, parameter, constraints) values ('175667706111541166551', 'host_cetp_control_params', 'ack', NULL);
+
+insert into host_cetp_policy_available (uid, type, parameter) values ('175667706111541166551', 'host_cetp_id', 'fqdn');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175667706111541166551', 'host_cetp_rloc', 'ipv4');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175667706111541166551', 'host_cetp_payload', 'eth');
+insert into host_cetp_policy_available (uid, type, parameter) values ('175667706111541166551', 'host_cetp_control_params', 'caep');
+
+
+
+
+
+
+
+#######    CES B Policies;
+
+
+
+
+
+
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'raimo2.cesb.lte.' from host_ids where fqdn='raimo2.cesb.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'raimo.cesb.lte.' from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'hostb3.cesb.lte.' from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'hostb2.cesb.lte.' from host_ids where fqdn='hostb2.cesb.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'srv1.hostb1.cesb.lte.' from host_ids where fqdn='srv1.hostb1.cesb.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'srv2.hostb1.cesb.lte.' from host_ids where fqdn='srv2.hostb1.cesb.lte.';
+insert into host_cetp_id (local_fqdn, id_type, value) select distinct fqdn, 'fqdn', 'hostb1.cesb.lte.' from host_ids where fqdn='hostb1.cesb.lte.';
+
+
+
+
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.103'  from host_ids where fqdn='raimo2.cesb.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.103'  from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.103'  from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.103'  from host_ids where fqdn='hostb2.cesb.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.103'  from host_ids where fqdn='srv1.hostb1.cesb.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.103'  from host_ids where fqdn='srv2.hostb1.cesb.lte.';
+insert into host_cetp_rloc (local_fqdn, remote_fqdn, rloc_type, value) select distinct fqdn, '*', 'ipv4', '10.0.3.103'  from host_ids where fqdn='hostb1.cesb.lte.';
+
+
+
+
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='raimo2.cesb.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='hostb2.cesb.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='srv1.hostb1.cesb.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='srv2.hostb1.cesb.lte.';
+insert into host_cetp_payload (local_fqdn, remote_fqdn, payload_type, value) select distinct fqdn, '*', 'eth', Null  from host_ids where fqdn='hostb1.cesb.lte.';
+
+
+
+
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'ack', NULL from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hostb2.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'EGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hostb1.cesb.lte.';
+
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='raimo2.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.146' from host_ids where fqdn='raimo.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hostb3.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hostb2.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='srv1.hostb1.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='srv2.hostb1.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'caep', '195.148.124.145' from host_ids where fqdn='hostb1.cesb.lte.';
+insert into host_cetp_control_params (local_fqdn, remote_fqdn, direction, parameters, value) select distinct fqdn, '*', 'INGRESS', 'ack', NULL from host_ids where fqdn='srv1.hostb1.cesb.lte.';
+
+
+
+
+
+
+
+
+
+
+
+################################################################
+################################################################
+################################################################
+################################################################
+################################################################
+################################################################
+################################################################
+################################################################
+################################################################
+################################################################
+################################################################
+
+
+#######    CES A Negotiations;
+
+
+
+insert into ces_negotiation_policy (trans_protocol, link_alias, dest_ces, reputation, direction, uid) values ('tcp', '', 'cesa.lte.', '', '*', 7338153920257921511);
+insert into ces_negotiation_policy (trans_protocol, link_alias, dest_ces, reputation, direction, uid) values ('tls', '', 'cesa.lte.', '', '*', 9847916985933656483);
+
+
+
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'cesid', '["cesb.lte.", "cesc.lte."]');
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'caces', '195.148.124.145');
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'fw_version', '0.1');
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'ttl', '{"min":"3600", "max":"7200"}');
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'keepalive_cycle', NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'keepalive',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'pow',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'session_limit', '300');
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'evidence_format', '["IETF-IOC1", "IETF-IOC2"]');
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'ipv4',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'ipv6',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('7338153920257921511', 'eth',  NULL);
+
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'cesid');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'caces');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'fw_version');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'ttl');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'keepalive_cycle');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'keepalive');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'session_limit');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'evidence_format');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'ipv4');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'ipv6');
+insert into ces_policy_offered (uid, parameter) values ('7338153920257921511', 'eth');
+
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'cesid');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'pow');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'caces');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'fw_version');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'ttl');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'keepalive_cycle');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'keepalive');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'session_limit');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'evidence_format');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'ipv4');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'ipv6');
+insert into ces_policy_available (uid, parameter) values ('7338153920257921511', 'eth');
+
+######
+
+
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'cesid', '["cesb.lte.", "cesc.lte."]');
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'caces', '195.148.124.145');
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'fw_version', '0.1');
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'ttl', '{"min":"3600", "max":"7200"}');
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'keepalive_cycle', '60');
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'keepalive',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'session_limit', '300');
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'evidence_format', '["IETF-IOC1", "IETF-IOC2"]');
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'ipv4',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'ipv6',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('9847916985933656483', 'eth',  NULL);
+
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'cesid');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'caces');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'fw_version');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'ttl');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'keepalive_cycle');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'keepalive');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'session_limit');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'evidence_format');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'ipv4');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'ipv6');
+insert into ces_policy_offered (uid, parameter) values ('9847916985933656483', 'eth');
+
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'cesid');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'pow');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'caces');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'fw_version');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'ttl');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'keepalive_cycle');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'keepalive');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'session_limit');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'evidence_format');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'ipv4');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'ipv6');
+insert into ces_policy_available (uid, parameter) values ('9847916985933656483', 'eth');
+
+
+#######    CES A Policies;
+
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'cesid', 'cesa.lte.');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'pow', NULL);
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'caces', '195.148.124.145');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'fw_version', '0.1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'ttl', '7200');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'keepalive_cycle', '60');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'keepalive', '');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'session_limit', '200');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'evidence_format', 'IETF-IOC1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'ipv4', '10.0.3.101');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'ipv6', '11:22:33:44:55:66:77:88');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesa.lte.', 'eth', NULL);
+
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'cesid', 'cesa.lte.');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'pow', NULL);
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'caces', '195.148.124.145');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'fw_version', '0.1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'ttl', '7200');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'keepalive_cycle', '60');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'keepalive', '');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'session_limit', '200');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'evidence_format', 'IETF-IOC1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'ipv4', '10.0.3.101');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'ipv6', '11:22:33:44:55:66:77:88');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesa.lte.', 'eth', NULL);
+
+
+################################################################
+
+
+#######    CES B Negotiations;
+
+
+insert into ces_negotiation_policy (trans_protocol, link_alias, dest_ces, reputation, direction, uid) values ('tcp', '', 'cesb.lte.', '', '*', 4658123920258546275);
+insert into ces_negotiation_policy (trans_protocol, link_alias, dest_ces, reputation, direction, uid) values ('tls', '', 'cesb.lte.', '', '*', 3287461985939461524);
+
+
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'cesid', '["cesa.lte.", "cesc.lte."]');
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'caces', '195.148.124.145');
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'fw_version', '0.1');
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'ttl', '{"min":"3600", "max":"7200"}');
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'keepalive_cycle', NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'keepalive',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'pow',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'session_limit', '500');
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'evidence_format', '["IETF-IOC1", "IETF-IOC2"]');
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'ipv4',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'ipv6',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('4658123920258546275', 'eth',  NULL);
+
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'cesid');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'caces');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'fw_version');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'ttl');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'keepalive_cycle');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'keepalive');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'session_limit');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'evidence_format');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'ipv4');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'ipv6');
+insert into ces_policy_offered (uid, parameter) values ('4658123920258546275', 'eth');
+
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'cesid');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'pow');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'caces');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'fw_version');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'ttl');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'keepalive_cycle');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'keepalive');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'session_limit');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'evidence_format');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'ipv4');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'ipv6');
+insert into ces_policy_available (uid, parameter) values ('4658123920258546275', 'eth');
+
+############################
+
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'cesid', '["cesa.lte.", "cesc.lte."]');
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'caces', '195.148.124.145');
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'fw_version', '0.1');
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'ttl', '{"min":"3600", "max":"7200"}');
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'keepalive_cycle', NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'keepalive',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'session_limit', '500');
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'evidence_format', '["IETF-IOC1", "IETF-IOC2"]');
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'ipv4',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'ipv6',  NULL);
+insert into ces_policy_required (uid, parameter, constraints) values ('3287461985939461524', 'eth',  NULL);
+
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'cesid');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'caces');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'fw_version');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'ttl');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'keepalive_cycle');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'keepalive');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'session_limit');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'evidence_format');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'ipv4');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'ipv6');
+insert into ces_policy_offered (uid, parameter) values ('3287461985939461524', 'eth');
+
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'cesid');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'pow');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'caces');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'fw_version');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'ttl');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'keepalive_cycle');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'keepalive');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'session_limit');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'evidence_format');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'ipv4');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'ipv6');
+insert into ces_policy_available (uid, parameter) values ('3287461985939461524', 'eth');
+
+
+
+#######    CES B Policies;
+
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'cesid', 'cesb.lte.');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'pow', NULL);
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'caces', '195.148.124.145');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'fw_version', '0.1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'ttl', '3600');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'keepalive_cycle', '60');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'keepalive', '');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'session_limit', '200');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'evidence_format', 'IETF-IOC1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'ipv4', '10.0.3.103');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'ipv6', '11:22:33:44:55:66:77:89');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tcp', '', 'cesb.lte.', 'eth', NULL);
+
+
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'cesid', 'cesb.lte.');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'pow', NULL);
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'caces', '195.148.124.145');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'fw_version', '0.1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'ttl', '3600');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'keepalive_cycle', '60');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'keepalive', '');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'session_limit', '200');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'evidence_format', 'IETF-IOC1');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'ipv4', '10.0.3.103');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'ipv6', '11:22:33:44:55:66:77:89');
+insert into ces_policy_params (valid, trans_protocol, link_alias, dest_ces, parameters, value) values (1, 'tls', '', 'cesb.lte.', 'eth', NULL);
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+
+        <form action="{% url 'user_registration' %}" method="post" role="login">
+            {% csrf_token %}
+            <label><font color="red">{{message}}</font></label>
+            <input type="text" name="username" {{value}} placeholder="Username" required class="form-control input-lg"/>
+            <button type="submit" value="activate" name="action" >Activate</button>
+            <button type="submit" value="deactivate" name="action">De-activate</button>
+        </form>

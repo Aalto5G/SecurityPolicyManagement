@@ -1,0 +1,55 @@
+insert into ces_policy_identity (host_ces_id, protocol, uuid) values ('cesa.lte.', 'tcp','123123123');
+
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "cesid", "value":["cesb.lte.", "cesc.lte.", "cesd.lte.", "cese.lte."]}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "caces", "value":"195.148.124.145"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "fw_version", "value":"0.1"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "ttl", "value":{"min":"3600", "max":"7200"}}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "keepalive_cycle"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "keepalive"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "pow"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "session_limit", "value": "300"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "ces", "code": "evidence_format", "value":["IETF-IOC1", "IETF-IOC2"]}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "rloc", "code": "ipv4"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "rloc", "code": "ipv6" }');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "payload", "code": "eth" }');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "cesid", "value":"cesa.lte."}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "caces", "value":"195.148.124.145"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "fw_version", "value":"0.1"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "ttl", "value":"7200"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "keepalive_cycle", "value":"60"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "keepalive", "value":""}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "session_limit", "value": "200"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "ces", "code": "evidence_format", "value":"IETF-IOC1"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "rloc", "code": "ipv4" }');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "rloc", "code": "ipv6" }');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "payload", "code": "eth" }');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "cesid", "value":"cesa.lte."}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "pow"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "caces", "value":"195.148.124.145"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "fw_version", "value":"0.1"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "ttl", "value":"7200"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "keepalive_cycle", "value":"60"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "keepalive", "value":""}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "session_limit", "value": "200"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "ces", "code": "evidence_format", "value":"IETF-IOC1"}');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "rloc", "code": "ipv4" }');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "rloc", "code": "ipv6" }');
+insert into ces_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "payload", "code": "eth" }');
+
+
+
+insert into host_policy_identity (local_fqdn, remote_fqdn, reputation, direction, uuid) values ('hosta1.cesa.lte.',Null,Null,'EGRESS','123123123');
+
+insert into host_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "id", "code": "fqdn" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "rloc", "code": "ipv4" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "payload", "code": "eth", "value":"" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','request','{ "ope":"query", "group": "control", "code": "caep" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "id", "code": "fqdn", "value":"hosta1.cesa.lte." }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "rloc", "code": "ipv4" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "payload", "code": "eth" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','offer','{ "ope":"info", "group": "control", "code": "caep", "value":"195.148.124.145" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "id", "code": "fqdn", "value":"hosta1.cesa.lte." }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "rloc", "code": "ipv4" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "payload", "code": "eth" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "control", "code": "caep", "value":"195.148.124.145" }');
+insert into host_policies (uuid, types, policy_element) values ('123123123','available','{ "ope":"info", "group": "control", "code": "ack" }');

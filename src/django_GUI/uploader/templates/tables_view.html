@@ -1,0 +1,247 @@
+{% load static %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+{% load staticfiles %}
+
+<style>
+@CHARSET "UTF-8";
+/*
+over-ride "Weak" message, show font in dark grey
+*/
+
+.progress-bar {
+    color: #333;
+}
+
+/*
+Reference:
+http://www.bootstrapzen.com/item/135/simple-login-form-logo/
+*/
+
+* {
+    -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+    .form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+body {
+	background: url({% static 'background2.jpg' %}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+table {
+	background: #f5f5f5;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: left;
+	width: 800px;
+}
+
+th {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+  font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;
+}
+
+th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
+}
+
+th:first-child {
+	border-left: 1px solid #777;
+	box-shadow: inset 1px 1px 0 #999;
+}
+
+th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+}
+
+td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}
+
+td:last-child {
+	border-right: 1px solid #e8e8e8;
+	box-shadow: inset -1px 0 0 #fff;
+}
+
+tr {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:nth-child(odd) td {
+	background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff;
+}
+
+tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}
+
+tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}
+
+</style>
+
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse">
+      <a class="nav navbar-brand" href="{% url 'main' %}" onclick="{% url 'main' %}"><font color="white">Policy Management Interface</font></a>
+      <a class="nav navbar-brand" href="{% url 'main' %}"><font color="white">Home</font></a>
+      <a class="nav navbar-brand navbar-right" href="{% url 'logout' %}"><font color="white">Logout {{ user.first_name }}</font></a>
+    </div>
+
+  </div>
+</nav>
+
+<!--
+<select name="page" id="page">
+    <option value="25">25</option>
+    <option value="50">50</option>
+    <option value="75">75</option>
+    <option value="100">100</option>
+</select>
+<button onclick="#">go</button>
+-->
+<br>
+<br>
+<div class="col-md-1">
+</div>
+<form name="edit_table" action="#" method="POST" enctype="multipart/form-data" id="edit_table">
+    	{% csrf_token %}
+    <p><font color="red"><b>{{ message }}</b></font></p>
+    <table style="width:70%"  id="table" class="table table-hover table-mc-light-blue">
+        <caption><h1><font color="white"><b>{{table_name}}</b></font></h1></caption>
+        <thead>
+            <tr>
+            {% for name in table_columns %}<th>{{ name }}</th>{% endfor %}
+            <th>Select</th>
+            <th>Editing</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rows,ids in table_data %}
+            <tr>
+            {% for name in rows %}<td>{{ name }}</td>{% endfor %}
+            <td><input type='checkbox' name='items' value='{{ ids }}'></input></td>
+            <td><a href='#' onclick="location.href = '{{ ids }}';">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% if table_data.has_other_pages %}
+  <ul class="pagination">
+    {% if table_data.has_previous %}
+      <li><a href="?page={{ table_data.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in table_data.paginator.page_range %}
+      {% if table_data.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if table_data.has_next %}
+      <li><a href="?page={{ table_data.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+
+
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-2">
+	<br>
+     <input class="btn btn-lg btn-primary btn-block " data-disable type="submit" value="Delete"></input>
+        <br>
+        <a href="../../entry/{{table_name}}"><button class="btn btn-lg btn-primary btn-block" data-disable type="button">Add Policy</button></a>
+
+	</div>
+</form>
+<br>
+<br>
+<br>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

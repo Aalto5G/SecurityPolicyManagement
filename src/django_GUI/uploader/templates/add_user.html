@@ -1,0 +1,207 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{% static 'login_style.css' %}" />
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse">
+      <a class="nav navbar-brand" href="{% url 'main' %}" onclick="{% url 'main' %}"><font color="white">Policy Management Interface</font></a>
+      <a class="nav navbar-brand navbar-right" href="{% url 'login' %}"><font color="white">Login</font></a>
+    </div>
+
+  </div>
+</nav>
+
+
+<style>
+@CHARSET "UTF-8";
+/*
+over-ride "Weak" message, show font in dark grey
+*/
+
+.progress-bar {
+    color: #333;
+}
+
+/*
+Reference:
+http://www.bootstrapzen.com/item/135/simple-login-form-logo/
+*/
+
+* {
+    -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+    .form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+body {
+	background: url({% static 'background.jpg' %}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+}
+
+.login-form {
+	margin-top: 60px;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #f2f2f2;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	form[role=login] img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 35px;
+	}
+	form[role=login] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 5px 0;
+	}
+	form[role=login] > div {
+		text-align: center;
+	}
+
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+	.form-links a {
+		color: #fff;
+	}
+</style>
+
+    <script type="text/javascript">
+    $(".admin_key1").hide();
+    $(".showHideCheck").on("change", function() {
+        $this = $(this);
+        $input = $this.parent().find(".admin_key1");
+        if($this.is(":checked")) {
+            $input.slideDown();
+        } else {
+            $input.slideUp();
+        }
+    });
+    </script>
+
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() { // encapsulate your code into a function and pass it to jQuery
+  $(".hiddenInput").hide();
+  $(".showHideCheck").on("change", function() {
+    $this = $(this);
+    $input = $this.parent().find(".hiddenInput");
+    if($this.is(":checked")) {
+        $input.slideDown();
+    } else {
+        $input.slideUp();
+    }
+  });
+});
+</script>
+</head>
+<body>
+
+
+<div class="container">
+
+  <div class="row" id="pwd-container">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      <section class="login-form">
+        <br><br><br>
+        <form name="add_user" action="{% url 'add_user' %}" method="POST" enctype="multipart/form-data" id="add_user" role="login">{% csrf_token %}
+          <img src="{% static 'Take_Five.png' %}" class="img-responsive" alt="" />
+            <label><font color="red">{{message}}</font></label>
+
+
+
+          First Name<br>{{ form.first_name }}<br>
+            <font color="red">{{ form.errors.first_name }}</font>
+          Last Name<br>{{ form.last_name }}<br>
+            <font color="red">{{ form.errors.last_name }}</font>
+          User Name<br>{{ form.username }}<br>
+            <font color="red">{{ form.errors.username }}</font>
+          Password<br>{{ form.password }}<br>
+            <font color="red">{{ form.errors.password }}</font>
+          Email<br>{{ form.email }}<br>
+            <font color="red">{{ form.errors.email }}</font>
+          FQDN<br>{{ formfqdn.fqdn }}<br>
+            <font color="red">{{ formfqdn.errors.fqdn }}</font>
+
+          <br>
+
+            <div class="option">
+        <!--<input type="checkbox" name="chkBox1" id="chkBox1" class="showHideCheck" />Click me to show the text box-->
+        <label>Check if Admin</label><input id="id_is_staff" name="is_staff" type="checkbox" class="showHideCheck form-control input-lg"/>
+        <br/><div class="hiddenInput"> Enter Secret Key
+        <input class="showHideCheck" id="admin_key" maxlength="128" placeholder="Key for Admin" name="admin_key" type="password"/>
+        </div>
+    </div>
+
+
+          <div class="pwstrength_viewport_progress"></div>
+
+
+          <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Create Account</button>
+          <div>
+            <a href="{% url 'add_user' %}">Create account</a>
+          </div>
+
+        </form>
+
+        <div class="form-links">
+          <a href="http://www.re2ee.org/">www.re2ee.org</a>
+        </div>
+      </section>
+      </div>
+
+      <div class="col-md-4"></div>
+
+
+  </div>
+
+  <p>
+    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbootsnipp.com%2Fiframe%2FW00op" target="_blank"><small></small><sup></sup></a>
+    <br>
+    <br>
+
+  </p>
+
+
+</div>
+</body>
+
+
+<!--
+        First Name<input id="id_first_name" maxlength="32" name="first_name" type="text" placeholder="First Name" required class="form-control input-lg"/>
+        Last Name<input id="id_last_name" maxlength="32" name="last_name" type="text" placeholder="Last Name" required class="form-control input-lg"/>
+Username <input id="id_username" maxlength="32" name="username" type="text" placeholder="Username" required class="form-control input-lg"/>
+        Password<input id="id_password" maxlength="32" name="password" type="password" required placeholder="Password" class="form-control input-lg"/>
+        Email<input id="id_email" maxlength="64" name="email" type="text" required placeholder="Email Address" class="form-control input-lg"/>
+-->

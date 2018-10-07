@@ -1,0 +1,585 @@
+-- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
+--
+-- Host: localhost    Database: host_policies
+-- ------------------------------------------------------
+-- Server version	5.7.20-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ces_negotiation_policy`
+--
+
+DROP TABLE IF EXISTS `ces_negotiation_policy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_negotiation_policy` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trans_protocol` varchar(16) DEFAULT NULL,
+  `link_alias` varchar(128) DEFAULT NULL,
+  `dest_ces` varchar(128) DEFAULT NULL,
+  `reputation` varchar(48) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `uid` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`),
+  UNIQUE KEY `trans_protocol` (`trans_protocol`,`link_alias`,`dest_ces`,`reputation`,`direction`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_negotiation_policy`
+--
+
+LOCK TABLES `ces_negotiation_policy` WRITE;
+/*!40000 ALTER TABLE `ces_negotiation_policy` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_negotiation_policy` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_available`
+--
+
+DROP TABLE IF EXISTS `ces_policy_available`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_available` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_available`
+--
+
+LOCK TABLES `ces_policy_available` WRITE;
+/*!40000 ALTER TABLE `ces_policy_available` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_available` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_offered`
+--
+
+DROP TABLE IF EXISTS `ces_policy_offered`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_offered` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_offered`
+--
+
+LOCK TABLES `ces_policy_offered` WRITE;
+/*!40000 ALTER TABLE `ces_policy_offered` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_offered` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_params`
+--
+
+DROP TABLE IF EXISTS `ces_policy_params`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_params` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trans_protocol` varchar(16) DEFAULT NULL,
+  `link_alias` varchar(128) DEFAULT NULL,
+  `dest_ces` varchar(128) DEFAULT NULL,
+  `reputation` varchar(48) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `valid` bit(1) DEFAULT NULL,
+  `parameters` varchar(128) DEFAULT NULL,
+  `value` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `trans_protocol` (`trans_protocol`,`link_alias`,`dest_ces`,`reputation`,`direction`,`valid`,`parameters`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_params`
+--
+
+LOCK TABLES `ces_policy_params` WRITE;
+/*!40000 ALTER TABLE `ces_policy_params` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_params` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_required`
+--
+
+DROP TABLE IF EXISTS `ces_policy_required`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_required` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  `constraints` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_required`
+--
+
+LOCK TABLES `ces_policy_required` WRITE;
+/*!40000 ALTER TABLE `ces_policy_required` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_required` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_carriergrade`
+--
+
+DROP TABLE IF EXISTS `host_carriergrade`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_carriergrade` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `raw_data` varchar(512) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`raw_data`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_carriergrade`
+--
+
+LOCK TABLES `host_carriergrade` WRITE;
+/*!40000 ALTER TABLE `host_carriergrade` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_carriergrade` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_control_params`
+--
+
+DROP TABLE IF EXISTS `host_cetp_control_params`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_control_params` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `parameters` varchar(128) DEFAULT NULL,
+  `value` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`direction`,`parameters`)
+) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_control_params`
+--
+
+LOCK TABLES `host_cetp_control_params` WRITE;
+/*!40000 ALTER TABLE `host_cetp_control_params` DISABLE KEYS */;
+INSERT INTO `host_cetp_control_params` VALUES (1,'test0.demo.','*','*','caep','[\"195.148.124.145\"]'),(2,'test0.demo.','*','*','ack','[\"195.148.124.145\"]'),(3,'test1.demo.','*','*','caep','[\"195.148.124.145\"]'),(4,'test1.demo.','*','*','ack','[\"195.148.124.145\"]'),(5,'test2.demo.','*','*','caep','[\"195.148.124.145\"]'),(6,'test2.demo.','*','*','ack','[\"195.148.124.145\"]'),(7,'test3.demo.','*','*','caep','[\"195.148.124.145\"]'),(8,'test3.demo.','*','*','ack','[\"195.148.124.145\"]'),(9,'test4.demo.','*','*','caep','[\"195.148.124.145\"]'),(10,'test4.demo.','*','*','ack','[\"195.148.124.145\"]'),(11,'test5.demo.','*','*','caep','[\"195.148.124.145\"]'),(12,'test5.demo.','*','*','ack','[\"195.148.124.145\"]'),(13,'test6.demo.','*','*','caep','[\"195.148.124.145\"]'),(14,'test6.demo.','*','*','ack','[\"195.148.124.145\"]'),(15,'test7.demo.','*','*','caep','[\"195.148.124.145\"]'),(16,'test7.demo.','*','*','ack','[\"195.148.124.145\"]'),(17,'test8.demo.','*','*','caep','[\"195.148.124.145\"]'),(18,'test8.demo.','*','*','ack','[\"195.148.124.145\"]'),(19,'test9.demo.','*','*','caep','[\"195.148.124.145\"]'),(20,'test9.demo.','*','*','ack','[\"195.148.124.145\"]'),(21,'test10.demo.','*','*','caep','[\"195.148.124.145\"]'),(22,'test10.demo.','*','*','ack','[\"195.148.124.145\"]'),(23,'test11.demo.','*','*','caep','[\"195.148.124.145\"]'),(24,'test11.demo.','*','*','ack','[\"195.148.124.145\"]'),(25,'test12.demo.','*','*','caep','[\"195.148.124.145\"]'),(26,'test12.demo.','*','*','ack','[\"195.148.124.145\"]'),(27,'test13.demo.','*','*','caep','[\"195.148.124.145\"]'),(28,'test13.demo.','*','*','ack','[\"195.148.124.145\"]'),(29,'test14.demo.','*','*','caep','[\"195.148.124.145\"]'),(30,'test14.demo.','*','*','ack','[\"195.148.124.145\"]'),(31,'test15.demo.','*','*','caep','[\"195.148.124.145\"]'),(32,'test15.demo.','*','*','ack','[\"195.148.124.145\"]'),(33,'test16.demo.','*','*','caep','[\"195.148.124.145\"]'),(34,'test16.demo.','*','*','ack','[\"195.148.124.145\"]'),(35,'test17.demo.','*','*','caep','[\"195.148.124.145\"]'),(36,'test17.demo.','*','*','ack','[\"195.148.124.145\"]'),(37,'test18.demo.','*','*','caep','[\"195.148.124.145\"]'),(38,'test18.demo.','*','*','ack','[\"195.148.124.145\"]'),(39,'test19.demo.','*','*','caep','[\"195.148.124.145\"]'),(40,'test19.demo.','*','*','ack','[\"195.148.124.145\"]'),(41,'test20.demo.','*','*','caep','[\"195.148.124.145\"]'),(42,'test20.demo.','*','*','ack','[\"195.148.124.145\"]'),(43,'test21.demo.','*','*','caep','[\"195.148.124.145\"]'),(44,'test21.demo.','*','*','ack','[\"195.148.124.145\"]'),(45,'test22.demo.','*','*','caep','[\"195.148.124.145\"]'),(46,'test22.demo.','*','*','ack','[\"195.148.124.145\"]'),(47,'test23.demo.','*','*','caep','[\"195.148.124.145\"]'),(48,'test23.demo.','*','*','ack','[\"195.148.124.145\"]'),(49,'test24.demo.','*','*','caep','[\"195.148.124.145\"]'),(50,'test24.demo.','*','*','ack','[\"195.148.124.145\"]'),(51,'test25.demo.','*','*','caep','[\"195.148.124.145\"]'),(52,'test25.demo.','*','*','ack','[\"195.148.124.145\"]'),(53,'test26.demo.','*','*','caep','[\"195.148.124.145\"]'),(54,'test26.demo.','*','*','ack','[\"195.148.124.145\"]'),(55,'test27.demo.','*','*','caep','[\"195.148.124.145\"]'),(56,'test27.demo.','*','*','ack','[\"195.148.124.145\"]'),(57,'test28.demo.','*','*','caep','[\"195.148.124.145\"]'),(58,'test28.demo.','*','*','ack','[\"195.148.124.145\"]'),(59,'test29.demo.','*','*','caep','[\"195.148.124.145\"]'),(60,'test29.demo.','*','*','ack','[\"195.148.124.145\"]'),(61,'test30.demo.','*','*','caep','[\"195.148.124.145\"]'),(62,'test30.demo.','*','*','ack','[\"195.148.124.145\"]'),(63,'test31.demo.','*','*','caep','[\"195.148.124.145\"]'),(64,'test31.demo.','*','*','ack','[\"195.148.124.145\"]'),(65,'test32.demo.','*','*','caep','[\"195.148.124.145\"]'),(66,'test32.demo.','*','*','ack','[\"195.148.124.145\"]'),(67,'test33.demo.','*','*','caep','[\"195.148.124.145\"]'),(68,'test33.demo.','*','*','ack','[\"195.148.124.145\"]'),(69,'test34.demo.','*','*','caep','[\"195.148.124.145\"]'),(70,'test34.demo.','*','*','ack','[\"195.148.124.145\"]'),(71,'test35.demo.','*','*','caep','[\"195.148.124.145\"]'),(72,'test35.demo.','*','*','ack','[\"195.148.124.145\"]'),(73,'test36.demo.','*','*','caep','[\"195.148.124.145\"]'),(74,'test36.demo.','*','*','ack','[\"195.148.124.145\"]'),(75,'test37.demo.','*','*','caep','[\"195.148.124.145\"]'),(76,'test37.demo.','*','*','ack','[\"195.148.124.145\"]'),(77,'test38.demo.','*','*','caep','[\"195.148.124.145\"]'),(78,'test38.demo.','*','*','ack','[\"195.148.124.145\"]'),(79,'test39.demo.','*','*','caep','[\"195.148.124.145\"]'),(80,'test39.demo.','*','*','ack','[\"195.148.124.145\"]'),(81,'test40.demo.','*','*','caep','[\"195.148.124.145\"]'),(82,'test40.demo.','*','*','ack','[\"195.148.124.145\"]'),(83,'test41.demo.','*','*','caep','[\"195.148.124.145\"]'),(84,'test41.demo.','*','*','ack','[\"195.148.124.145\"]'),(85,'test42.demo.','*','*','caep','[\"195.148.124.145\"]'),(86,'test42.demo.','*','*','ack','[\"195.148.124.145\"]'),(87,'test43.demo.','*','*','caep','[\"195.148.124.145\"]'),(88,'test43.demo.','*','*','ack','[\"195.148.124.145\"]'),(89,'test44.demo.','*','*','caep','[\"195.148.124.145\"]'),(90,'test44.demo.','*','*','ack','[\"195.148.124.145\"]'),(91,'test45.demo.','*','*','caep','[\"195.148.124.145\"]'),(92,'test45.demo.','*','*','ack','[\"195.148.124.145\"]'),(93,'test46.demo.','*','*','caep','[\"195.148.124.145\"]'),(94,'test46.demo.','*','*','ack','[\"195.148.124.145\"]'),(95,'test47.demo.','*','*','caep','[\"195.148.124.145\"]'),(96,'test47.demo.','*','*','ack','[\"195.148.124.145\"]'),(97,'test48.demo.','*','*','caep','[\"195.148.124.145\"]'),(98,'test48.demo.','*','*','ack','[\"195.148.124.145\"]'),(99,'test49.demo.','*','*','caep','[\"195.148.124.145\"]'),(100,'test49.demo.','*','*','ack','[\"195.148.124.145\"]'),(101,'test50.demo.','*','*','caep','[\"195.148.124.145\"]'),(102,'test50.demo.','*','*','ack','[\"195.148.124.145\"]'),(103,'test51.demo.','*','*','caep','[\"195.148.124.145\"]'),(104,'test51.demo.','*','*','ack','[\"195.148.124.145\"]'),(105,'test52.demo.','*','*','caep','[\"195.148.124.145\"]'),(106,'test52.demo.','*','*','ack','[\"195.148.124.145\"]'),(107,'test53.demo.','*','*','caep','[\"195.148.124.145\"]'),(108,'test53.demo.','*','*','ack','[\"195.148.124.145\"]'),(109,'test54.demo.','*','*','caep','[\"195.148.124.145\"]'),(110,'test54.demo.','*','*','ack','[\"195.148.124.145\"]'),(111,'test55.demo.','*','*','caep','[\"195.148.124.145\"]'),(112,'test55.demo.','*','*','ack','[\"195.148.124.145\"]'),(113,'test56.demo.','*','*','caep','[\"195.148.124.145\"]'),(114,'test56.demo.','*','*','ack','[\"195.148.124.145\"]'),(115,'test57.demo.','*','*','caep','[\"195.148.124.145\"]'),(116,'test57.demo.','*','*','ack','[\"195.148.124.145\"]'),(117,'test58.demo.','*','*','caep','[\"195.148.124.145\"]'),(118,'test58.demo.','*','*','ack','[\"195.148.124.145\"]'),(119,'test59.demo.','*','*','caep','[\"195.148.124.145\"]'),(120,'test59.demo.','*','*','ack','[\"195.148.124.145\"]'),(121,'test60.demo.','*','*','caep','[\"195.148.124.145\"]'),(122,'test60.demo.','*','*','ack','[\"195.148.124.145\"]'),(123,'test61.demo.','*','*','caep','[\"195.148.124.145\"]'),(124,'test61.demo.','*','*','ack','[\"195.148.124.145\"]'),(125,'test62.demo.','*','*','caep','[\"195.148.124.145\"]'),(126,'test62.demo.','*','*','ack','[\"195.148.124.145\"]'),(127,'test63.demo.','*','*','caep','[\"195.148.124.145\"]'),(128,'test63.demo.','*','*','ack','[\"195.148.124.145\"]'),(129,'test64.demo.','*','*','caep','[\"195.148.124.145\"]'),(130,'test64.demo.','*','*','ack','[\"195.148.124.145\"]'),(131,'test65.demo.','*','*','caep','[\"195.148.124.145\"]'),(132,'test65.demo.','*','*','ack','[\"195.148.124.145\"]'),(133,'test66.demo.','*','*','caep','[\"195.148.124.145\"]'),(134,'test66.demo.','*','*','ack','[\"195.148.124.145\"]'),(135,'test67.demo.','*','*','caep','[\"195.148.124.145\"]'),(136,'test67.demo.','*','*','ack','[\"195.148.124.145\"]'),(137,'test68.demo.','*','*','caep','[\"195.148.124.145\"]'),(138,'test68.demo.','*','*','ack','[\"195.148.124.145\"]'),(139,'test69.demo.','*','*','caep','[\"195.148.124.145\"]'),(140,'test69.demo.','*','*','ack','[\"195.148.124.145\"]'),(141,'test70.demo.','*','*','caep','[\"195.148.124.145\"]'),(142,'test70.demo.','*','*','ack','[\"195.148.124.145\"]'),(143,'test71.demo.','*','*','caep','[\"195.148.124.145\"]'),(144,'test71.demo.','*','*','ack','[\"195.148.124.145\"]'),(145,'test72.demo.','*','*','caep','[\"195.148.124.145\"]'),(146,'test72.demo.','*','*','ack','[\"195.148.124.145\"]'),(147,'test73.demo.','*','*','caep','[\"195.148.124.145\"]'),(148,'test73.demo.','*','*','ack','[\"195.148.124.145\"]'),(149,'test74.demo.','*','*','caep','[\"195.148.124.145\"]'),(150,'test74.demo.','*','*','ack','[\"195.148.124.145\"]'),(151,'test75.demo.','*','*','caep','[\"195.148.124.145\"]'),(152,'test75.demo.','*','*','ack','[\"195.148.124.145\"]'),(153,'test76.demo.','*','*','caep','[\"195.148.124.145\"]'),(154,'test76.demo.','*','*','ack','[\"195.148.124.145\"]'),(155,'test77.demo.','*','*','caep','[\"195.148.124.145\"]'),(156,'test77.demo.','*','*','ack','[\"195.148.124.145\"]'),(157,'test78.demo.','*','*','caep','[\"195.148.124.145\"]'),(158,'test78.demo.','*','*','ack','[\"195.148.124.145\"]'),(159,'test79.demo.','*','*','caep','[\"195.148.124.145\"]'),(160,'test79.demo.','*','*','ack','[\"195.148.124.145\"]'),(161,'test80.demo.','*','*','caep','[\"195.148.124.145\"]'),(162,'test80.demo.','*','*','ack','[\"195.148.124.145\"]'),(163,'test81.demo.','*','*','caep','[\"195.148.124.145\"]'),(164,'test81.demo.','*','*','ack','[\"195.148.124.145\"]'),(165,'test82.demo.','*','*','caep','[\"195.148.124.145\"]'),(166,'test82.demo.','*','*','ack','[\"195.148.124.145\"]'),(167,'test83.demo.','*','*','caep','[\"195.148.124.145\"]'),(168,'test83.demo.','*','*','ack','[\"195.148.124.145\"]'),(169,'test84.demo.','*','*','caep','[\"195.148.124.145\"]'),(170,'test84.demo.','*','*','ack','[\"195.148.124.145\"]'),(171,'test85.demo.','*','*','caep','[\"195.148.124.145\"]'),(172,'test85.demo.','*','*','ack','[\"195.148.124.145\"]'),(173,'test86.demo.','*','*','caep','[\"195.148.124.145\"]'),(174,'test86.demo.','*','*','ack','[\"195.148.124.145\"]'),(175,'test87.demo.','*','*','caep','[\"195.148.124.145\"]'),(176,'test87.demo.','*','*','ack','[\"195.148.124.145\"]'),(177,'test88.demo.','*','*','caep','[\"195.148.124.145\"]'),(178,'test88.demo.','*','*','ack','[\"195.148.124.145\"]'),(179,'test89.demo.','*','*','caep','[\"195.148.124.145\"]'),(180,'test89.demo.','*','*','ack','[\"195.148.124.145\"]'),(181,'test90.demo.','*','*','caep','[\"195.148.124.145\"]'),(182,'test90.demo.','*','*','ack','[\"195.148.124.145\"]'),(183,'test91.demo.','*','*','caep','[\"195.148.124.145\"]'),(184,'test91.demo.','*','*','ack','[\"195.148.124.145\"]'),(185,'test92.demo.','*','*','caep','[\"195.148.124.145\"]'),(186,'test92.demo.','*','*','ack','[\"195.148.124.145\"]'),(187,'test93.demo.','*','*','caep','[\"195.148.124.145\"]'),(188,'test93.demo.','*','*','ack','[\"195.148.124.145\"]'),(189,'test94.demo.','*','*','caep','[\"195.148.124.145\"]'),(190,'test94.demo.','*','*','ack','[\"195.148.124.145\"]'),(191,'test95.demo.','*','*','caep','[\"195.148.124.145\"]'),(192,'test95.demo.','*','*','ack','[\"195.148.124.145\"]'),(193,'test96.demo.','*','*','caep','[\"195.148.124.145\"]'),(194,'test96.demo.','*','*','ack','[\"195.148.124.145\"]'),(195,'test97.demo.','*','*','caep','[\"195.148.124.145\"]'),(196,'test97.demo.','*','*','ack','[\"195.148.124.145\"]'),(197,'test98.demo.','*','*','caep','[\"195.148.124.145\"]'),(198,'test98.demo.','*','*','ack','[\"195.148.124.145\"]'),(199,'test99.demo.','*','*','caep','[\"195.148.124.145\"]'),(200,'test99.demo.','*','*','ack','[\"195.148.124.145\"]');
+/*!40000 ALTER TABLE `host_cetp_control_params` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_id`
+--
+
+DROP TABLE IF EXISTS `host_cetp_id`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_id` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `id_type` varchar(64) DEFAULT NULL,
+  `value` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`id_type`,`value`)
+) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_id`
+--
+
+LOCK TABLES `host_cetp_id` WRITE;
+/*!40000 ALTER TABLE `host_cetp_id` DISABLE KEYS */;
+INSERT INTO `host_cetp_id` VALUES (1,'test0.demo.','fqdn','test0.demo.'),(2,'test1.demo.','fqdn','test1.demo.'),(3,'test2.demo.','fqdn','test2.demo.'),(4,'test3.demo.','fqdn','test3.demo.'),(5,'test4.demo.','fqdn','test4.demo.'),(6,'test5.demo.','fqdn','test5.demo.'),(7,'test6.demo.','fqdn','test6.demo.'),(8,'test7.demo.','fqdn','test7.demo.'),(9,'test8.demo.','fqdn','test8.demo.'),(10,'test9.demo.','fqdn','test9.demo.'),(11,'test10.demo.','fqdn','test10.demo.'),(12,'test11.demo.','fqdn','test11.demo.'),(13,'test12.demo.','fqdn','test12.demo.'),(14,'test13.demo.','fqdn','test13.demo.'),(15,'test14.demo.','fqdn','test14.demo.'),(16,'test15.demo.','fqdn','test15.demo.'),(17,'test16.demo.','fqdn','test16.demo.'),(18,'test17.demo.','fqdn','test17.demo.'),(19,'test18.demo.','fqdn','test18.demo.'),(20,'test19.demo.','fqdn','test19.demo.'),(21,'test20.demo.','fqdn','test20.demo.'),(22,'test21.demo.','fqdn','test21.demo.'),(23,'test22.demo.','fqdn','test22.demo.'),(24,'test23.demo.','fqdn','test23.demo.'),(25,'test24.demo.','fqdn','test24.demo.'),(26,'test25.demo.','fqdn','test25.demo.'),(27,'test26.demo.','fqdn','test26.demo.'),(28,'test27.demo.','fqdn','test27.demo.'),(29,'test28.demo.','fqdn','test28.demo.'),(30,'test29.demo.','fqdn','test29.demo.'),(31,'test30.demo.','fqdn','test30.demo.'),(32,'test31.demo.','fqdn','test31.demo.'),(33,'test32.demo.','fqdn','test32.demo.'),(34,'test33.demo.','fqdn','test33.demo.'),(35,'test34.demo.','fqdn','test34.demo.'),(36,'test35.demo.','fqdn','test35.demo.'),(37,'test36.demo.','fqdn','test36.demo.'),(38,'test37.demo.','fqdn','test37.demo.'),(39,'test38.demo.','fqdn','test38.demo.'),(40,'test39.demo.','fqdn','test39.demo.'),(41,'test40.demo.','fqdn','test40.demo.'),(42,'test41.demo.','fqdn','test41.demo.'),(43,'test42.demo.','fqdn','test42.demo.'),(44,'test43.demo.','fqdn','test43.demo.'),(45,'test44.demo.','fqdn','test44.demo.'),(46,'test45.demo.','fqdn','test45.demo.'),(47,'test46.demo.','fqdn','test46.demo.'),(48,'test47.demo.','fqdn','test47.demo.'),(49,'test48.demo.','fqdn','test48.demo.'),(50,'test49.demo.','fqdn','test49.demo.'),(51,'test50.demo.','fqdn','test50.demo.'),(52,'test51.demo.','fqdn','test51.demo.'),(53,'test52.demo.','fqdn','test52.demo.'),(54,'test53.demo.','fqdn','test53.demo.'),(55,'test54.demo.','fqdn','test54.demo.'),(56,'test55.demo.','fqdn','test55.demo.'),(57,'test56.demo.','fqdn','test56.demo.'),(58,'test57.demo.','fqdn','test57.demo.'),(59,'test58.demo.','fqdn','test58.demo.'),(60,'test59.demo.','fqdn','test59.demo.'),(61,'test60.demo.','fqdn','test60.demo.'),(62,'test61.demo.','fqdn','test61.demo.'),(63,'test62.demo.','fqdn','test62.demo.'),(64,'test63.demo.','fqdn','test63.demo.'),(65,'test64.demo.','fqdn','test64.demo.'),(66,'test65.demo.','fqdn','test65.demo.'),(67,'test66.demo.','fqdn','test66.demo.'),(68,'test67.demo.','fqdn','test67.demo.'),(69,'test68.demo.','fqdn','test68.demo.'),(70,'test69.demo.','fqdn','test69.demo.'),(71,'test70.demo.','fqdn','test70.demo.'),(72,'test71.demo.','fqdn','test71.demo.'),(73,'test72.demo.','fqdn','test72.demo.'),(74,'test73.demo.','fqdn','test73.demo.'),(75,'test74.demo.','fqdn','test74.demo.'),(76,'test75.demo.','fqdn','test75.demo.'),(77,'test76.demo.','fqdn','test76.demo.'),(78,'test77.demo.','fqdn','test77.demo.'),(79,'test78.demo.','fqdn','test78.demo.'),(80,'test79.demo.','fqdn','test79.demo.'),(81,'test80.demo.','fqdn','test80.demo.'),(82,'test81.demo.','fqdn','test81.demo.'),(83,'test82.demo.','fqdn','test82.demo.'),(84,'test83.demo.','fqdn','test83.demo.'),(85,'test84.demo.','fqdn','test84.demo.'),(86,'test85.demo.','fqdn','test85.demo.'),(87,'test86.demo.','fqdn','test86.demo.'),(88,'test87.demo.','fqdn','test87.demo.'),(89,'test88.demo.','fqdn','test88.demo.'),(90,'test89.demo.','fqdn','test89.demo.'),(91,'test90.demo.','fqdn','test90.demo.'),(92,'test91.demo.','fqdn','test91.demo.'),(93,'test92.demo.','fqdn','test92.demo.'),(94,'test93.demo.','fqdn','test93.demo.'),(95,'test94.demo.','fqdn','test94.demo.'),(96,'test95.demo.','fqdn','test95.demo.'),(97,'test96.demo.','fqdn','test96.demo.'),(98,'test97.demo.','fqdn','test97.demo.'),(99,'test98.demo.','fqdn','test98.demo.'),(100,'test99.demo.','fqdn','test99.demo.');
+/*!40000 ALTER TABLE `host_cetp_id` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_negotiations`
+--
+
+DROP TABLE IF EXISTS `host_cetp_negotiations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_negotiations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `reputation` varchar(48) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `uid` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`reputation`,`direction`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_negotiations`
+--
+
+LOCK TABLES `host_cetp_negotiations` WRITE;
+/*!40000 ALTER TABLE `host_cetp_negotiations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_negotiations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_payload`
+--
+
+DROP TABLE IF EXISTS `host_cetp_payload`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_payload` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `payload_type` varchar(64) DEFAULT NULL,
+  `value` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`payload_type`,`value`)
+) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_payload`
+--
+
+LOCK TABLES `host_cetp_payload` WRITE;
+/*!40000 ALTER TABLE `host_cetp_payload` DISABLE KEYS */;
+INSERT INTO `host_cetp_payload` VALUES (1,'test0.demo.','*','eth','1'),(2,'test1.demo.','*','eth','1'),(3,'test2.demo.','*','eth','1'),(4,'test3.demo.','*','eth','1'),(5,'test4.demo.','*','eth','1'),(6,'test5.demo.','*','eth','1'),(7,'test6.demo.','*','eth','1'),(8,'test7.demo.','*','eth','1'),(9,'test8.demo.','*','eth','1'),(10,'test9.demo.','*','eth','1'),(11,'test10.demo.','*','eth','1'),(12,'test11.demo.','*','eth','1'),(13,'test12.demo.','*','eth','1'),(14,'test13.demo.','*','eth','1'),(15,'test14.demo.','*','eth','1'),(16,'test15.demo.','*','eth','1'),(17,'test16.demo.','*','eth','1'),(18,'test17.demo.','*','eth','1'),(19,'test18.demo.','*','eth','1'),(20,'test19.demo.','*','eth','1'),(21,'test20.demo.','*','eth','1'),(22,'test21.demo.','*','eth','1'),(23,'test22.demo.','*','eth','1'),(24,'test23.demo.','*','eth','1'),(25,'test24.demo.','*','eth','1'),(26,'test25.demo.','*','eth','1'),(27,'test26.demo.','*','eth','1'),(28,'test27.demo.','*','eth','1'),(29,'test28.demo.','*','eth','1'),(30,'test29.demo.','*','eth','1'),(31,'test30.demo.','*','eth','1'),(32,'test31.demo.','*','eth','1'),(33,'test32.demo.','*','eth','1'),(34,'test33.demo.','*','eth','1'),(35,'test34.demo.','*','eth','1'),(36,'test35.demo.','*','eth','1'),(37,'test36.demo.','*','eth','1'),(38,'test37.demo.','*','eth','1'),(39,'test38.demo.','*','eth','1'),(40,'test39.demo.','*','eth','1'),(41,'test40.demo.','*','eth','1'),(42,'test41.demo.','*','eth','1'),(43,'test42.demo.','*','eth','1'),(44,'test43.demo.','*','eth','1'),(45,'test44.demo.','*','eth','1'),(46,'test45.demo.','*','eth','1'),(47,'test46.demo.','*','eth','1'),(48,'test47.demo.','*','eth','1'),(49,'test48.demo.','*','eth','1'),(50,'test49.demo.','*','eth','1'),(51,'test50.demo.','*','eth','1'),(52,'test51.demo.','*','eth','1'),(53,'test52.demo.','*','eth','1'),(54,'test53.demo.','*','eth','1'),(55,'test54.demo.','*','eth','1'),(56,'test55.demo.','*','eth','1'),(57,'test56.demo.','*','eth','1'),(58,'test57.demo.','*','eth','1'),(59,'test58.demo.','*','eth','1'),(60,'test59.demo.','*','eth','1'),(61,'test60.demo.','*','eth','1'),(62,'test61.demo.','*','eth','1'),(63,'test62.demo.','*','eth','1'),(64,'test63.demo.','*','eth','1'),(65,'test64.demo.','*','eth','1'),(66,'test65.demo.','*','eth','1'),(67,'test66.demo.','*','eth','1'),(68,'test67.demo.','*','eth','1'),(69,'test68.demo.','*','eth','1'),(70,'test69.demo.','*','eth','1'),(71,'test70.demo.','*','eth','1'),(72,'test71.demo.','*','eth','1'),(73,'test72.demo.','*','eth','1'),(74,'test73.demo.','*','eth','1'),(75,'test74.demo.','*','eth','1'),(76,'test75.demo.','*','eth','1'),(77,'test76.demo.','*','eth','1'),(78,'test77.demo.','*','eth','1'),(79,'test78.demo.','*','eth','1'),(80,'test79.demo.','*','eth','1'),(81,'test80.demo.','*','eth','1'),(82,'test81.demo.','*','eth','1'),(83,'test82.demo.','*','eth','1'),(84,'test83.demo.','*','eth','1'),(85,'test84.demo.','*','eth','1'),(86,'test85.demo.','*','eth','1'),(87,'test86.demo.','*','eth','1'),(88,'test87.demo.','*','eth','1'),(89,'test88.demo.','*','eth','1'),(90,'test89.demo.','*','eth','1'),(91,'test90.demo.','*','eth','1'),(92,'test91.demo.','*','eth','1'),(93,'test92.demo.','*','eth','1'),(94,'test93.demo.','*','eth','1'),(95,'test94.demo.','*','eth','1'),(96,'test95.demo.','*','eth','1'),(97,'test96.demo.','*','eth','1'),(98,'test97.demo.','*','eth','1'),(99,'test98.demo.','*','eth','1'),(100,'test99.demo.','*','eth','1');
+/*!40000 ALTER TABLE `host_cetp_payload` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_policy_available`
+--
+
+DROP TABLE IF EXISTS `host_cetp_policy_available`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_policy_available` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`type`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_policy_available`
+--
+
+LOCK TABLES `host_cetp_policy_available` WRITE;
+/*!40000 ALTER TABLE `host_cetp_policy_available` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_policy_available` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_policy_offered`
+--
+
+DROP TABLE IF EXISTS `host_cetp_policy_offered`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_policy_offered` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`type`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_policy_offered`
+--
+
+LOCK TABLES `host_cetp_policy_offered` WRITE;
+/*!40000 ALTER TABLE `host_cetp_policy_offered` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_policy_offered` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_policy_required`
+--
+
+DROP TABLE IF EXISTS `host_cetp_policy_required`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_policy_required` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  `constraints` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`type`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_policy_required`
+--
+
+LOCK TABLES `host_cetp_policy_required` WRITE;
+/*!40000 ALTER TABLE `host_cetp_policy_required` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_policy_required` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_rloc`
+--
+
+DROP TABLE IF EXISTS `host_cetp_rloc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_rloc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `rloc_type` varchar(64) DEFAULT NULL,
+  `value` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`rloc_type`,`value`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_rloc`
+--
+
+LOCK TABLES `host_cetp_rloc` WRITE;
+/*!40000 ALTER TABLE `host_cetp_rloc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_rloc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_circularpool`
+--
+
+DROP TABLE IF EXISTS `host_circularpool`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_circularpool` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `raw_data` varchar(512) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`raw_data`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_circularpool`
+--
+
+LOCK TABLES `host_circularpool` WRITE;
+/*!40000 ALTER TABLE `host_circularpool` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_circularpool` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_firewall`
+--
+
+DROP TABLE IF EXISTS `host_firewall`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_firewall` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(64) NOT NULL,
+  `cesapp_id` int(11) DEFAULT NULL,
+  `type` varchar(16) NOT NULL,
+  `active` bit(1) NOT NULL DEFAULT b'1',
+  `priority` tinyint(1) NOT NULL DEFAULT '0',
+  `direction` varchar(32) NOT NULL,
+  `src` varchar(128) DEFAULT NULL,
+  `dst` varchar(128) DEFAULT NULL,
+  `sport` varchar(128) DEFAULT NULL,
+  `dport` varchar(128) DEFAULT NULL,
+  `protocol` smallint(1) DEFAULT NULL,
+  `target` varchar(16) NOT NULL,
+  `comment` varchar(256) DEFAULT NULL,
+  `raw_data` varchar(256) DEFAULT NULL,
+  `schedule_start` datetime DEFAULT NULL,
+  `schedule_end` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cesapp_id` (`cesapp_id`),
+  UNIQUE KEY `uuid` (`uuid`,`type`,`direction`,`src`,`dst`,`sport`,`dport`,`protocol`,`target`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_firewall`
+--
+
+LOCK TABLES `host_firewall` WRITE;
+/*!40000 ALTER TABLE `host_firewall` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_firewall` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_group`
+--
+
+DROP TABLE IF EXISTS `host_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `groups` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`groups`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_group`
+--
+
+LOCK TABLES `host_group` WRITE;
+/*!40000 ALTER TABLE `host_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_ids`
+--
+
+DROP TABLE IF EXISTS `host_ids`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_ids` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `fqdn` varchar(256) NOT NULL,
+  `msisdn` varchar(16) DEFAULT NULL,
+  `ipv4` varchar(16) DEFAULT NULL,
+  PRIMARY KEY (`fqdn`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `uuid` (`uuid`),
+  UNIQUE KEY `ipv4` (`ipv4`),
+  UNIQUE KEY `msisdn` (`msisdn`)
+) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_ids`
+--
+
+LOCK TABLES `host_ids` WRITE;
+/*!40000 ALTER TABLE `host_ids` DISABLE KEYS */;
+INSERT INTO `host_ids` VALUES (1,'710915179844604391','test0.demo.','0000000000','192.168.4.0'),(2,'3159922282396258791','test1.demo.','0000000001','192.168.4.1'),(3,'3159922286691226087','test2.demo.','0000000002','192.168.4.2'),(4,'3159922290986193383','test3.demo.','0000000003','192.168.4.3'),(5,'3159922295281160679','test4.demo.','0000000004','192.168.4.4'),(6,'3159922299576127975','test5.demo.','0000000005','192.168.4.5'),(7,'3159922303871095271','test6.demo.','0000000006','192.168.4.6'),(8,'3159922308166062567','test7.demo.','0000000007','192.168.4.7'),(9,'3159922312461029863','test8.demo.','0000000008','192.168.4.8'),(10,'3159922316755997159','test9.demo.','0000000009','192.168.4.9'),(11,'3159922321050964455','test10.demo.','00000000010','192.168.4.10'),(12,'3159922325345931751','test11.demo.','00000000011','192.168.4.11'),(13,'3159922329640899047','test12.demo.','00000000012','192.168.4.12'),(14,'3159922333935866343','test13.demo.','00000000013','192.168.4.13'),(15,'3159922338230833639','test14.demo.','00000000014','192.168.4.14'),(16,'3159922342525800935','test15.demo.','00000000015','192.168.4.15'),(17,'3159922346820768231','test16.demo.','00000000016','192.168.4.16'),(18,'3159922351115735527','test17.demo.','00000000017','192.168.4.17'),(19,'3159922355410702823','test18.demo.','00000000018','192.168.4.18'),(20,'3159922359705670119','test19.demo.','00000000019','192.168.4.19'),(21,'3159922364000637415','test20.demo.','00000000020','192.168.4.20'),(22,'3159922368295604711','test21.demo.','00000000021','192.168.4.21'),(23,'3159922372590572007','test22.demo.','00000000022','192.168.4.22'),(24,'3159922376885539303','test23.demo.','00000000023','192.168.4.23'),(25,'3159922381180506599','test24.demo.','00000000024','192.168.4.24'),(26,'3954267722058174951','test25.demo.','00000000025','192.168.4.25'),(27,'3954267726353142247','test26.demo.','00000000026','192.168.4.26'),(28,'3954267730648109543','test27.demo.','00000000027','192.168.4.27'),(29,'3954267734943076839','test28.demo.','00000000028','192.168.4.28'),(30,'3954267739238044135','test29.demo.','00000000029','192.168.4.29'),(31,'3954267743533011431','test30.demo.','00000000030','192.168.4.30'),(32,'3954267747827978727','test31.demo.','00000000031','192.168.4.31'),(33,'3954267752122946023','test32.demo.','00000000032','192.168.4.32'),(34,'3954267756417913319','test33.demo.','00000000033','192.168.4.33'),(35,'3954267760712880615','test34.demo.','00000000034','192.168.4.34'),(36,'3954267765007847911','test35.demo.','00000000035','192.168.4.35'),(37,'3954267769302815207','test36.demo.','00000000036','192.168.4.36'),(38,'3954267773597782503','test37.demo.','00000000037','192.168.4.37'),(39,'3954267777892749799','test38.demo.','00000000038','192.168.4.38'),(40,'3954267782187717095','test39.demo.','00000000039','192.168.4.39'),(41,'3954267786482684391','test40.demo.','00000000040','192.168.4.40'),(42,'3954267790777651687','test41.demo.','00000000041','192.168.4.41'),(43,'3954267795072618983','test42.demo.','00000000042','192.168.4.42'),(44,'3954267799367586279','test43.demo.','00000000043','192.168.4.43'),(45,'3954267803662553575','test44.demo.','00000000044','192.168.4.44'),(46,'3954267807957520871','test45.demo.','00000000045','192.168.4.45'),(47,'3954267812252488167','test46.demo.','00000000046','192.168.4.46'),(48,'3954267816547455463','test47.demo.','00000000047','192.168.4.47'),(49,'3954267820842422759','test48.demo.','00000000048','192.168.4.48'),(50,'3954267825137390055','test49.demo.','00000000049','192.168.4.49'),(51,'4707846234089591271','test50.demo.','00000000050','192.168.4.50'),(52,'4707846238384558567','test51.demo.','00000000051','192.168.4.51'),(53,'4707846242679525863','test52.demo.','00000000052','192.168.4.52'),(54,'4707846246974493159','test53.demo.','00000000053','192.168.4.53'),(55,'4707846251269460455','test54.demo.','00000000054','192.168.4.54'),(56,'4707846255564427751','test55.demo.','00000000055','192.168.4.55'),(57,'4707846259859395047','test56.demo.','00000000056','192.168.4.56'),(58,'4707846264154362343','test57.demo.','00000000057','192.168.4.57'),(59,'4707846268449329639','test58.demo.','00000000058','192.168.4.58'),(60,'4707846272744296935','test59.demo.','00000000059','192.168.4.59'),(61,'4707846277039264231','test60.demo.','00000000060','192.168.4.60'),(62,'4707846281334231527','test61.demo.','00000000061','192.168.4.61'),(63,'4707846285629198823','test62.demo.','00000000062','192.168.4.62'),(64,'4707846289924166119','test63.demo.','00000000063','192.168.4.63'),(65,'4707846294219133415','test64.demo.','00000000064','192.168.4.64'),(66,'4707846298514100711','test65.demo.','00000000065','192.168.4.65'),(67,'4707846302809068007','test66.demo.','00000000066','192.168.4.66'),(68,'4707846307104035303','test67.demo.','00000000067','192.168.4.67'),(69,'4707846311399002599','test68.demo.','00000000068','192.168.4.68'),(70,'4707846315693969895','test69.demo.','00000000069','192.168.4.69'),(71,'4707846319988937191','test70.demo.','00000000070','192.168.4.70'),(72,'4707846324283904487','test71.demo.','00000000071','192.168.4.71'),(73,'4707846328578871783','test72.demo.','00000000072','192.168.4.72'),(74,'4707846332873839079','test73.demo.','00000000073','192.168.4.73'),(75,'4707846337168806375','test74.demo.','00000000074','192.168.4.74'),(76,'4707846341463773671','test75.demo.','00000000075','192.168.4.75'),(77,'4707846345758740967','test76.demo.','00000000076','192.168.4.76'),(78,'4707846350053708263','test77.demo.','00000000077','192.168.4.77'),(79,'4707846354348675559','test78.demo.','00000000078','192.168.4.78'),(80,'4707846358643642855','test79.demo.','00000000079','192.168.4.79'),(81,'4707846362938610151','test80.demo.','00000000080','192.168.4.80'),(82,'4707846367233577447','test81.demo.','00000000081','192.168.4.81'),(83,'4707846371528544743','test82.demo.','00000000082','192.168.4.82'),(84,'4707846375823512039','test83.demo.','00000000083','192.168.4.83'),(85,'4707846380118479335','test84.demo.','00000000084','192.168.4.84'),(86,'4707846384413446631','test85.demo.','00000000085','192.168.4.85'),(87,'4707846388708413927','test86.demo.','00000000086','192.168.4.86'),(88,'4707846393003381223','test87.demo.','00000000087','192.168.4.87'),(89,'4707846397298348519','test88.demo.','00000000088','192.168.4.88'),(90,'4707846401593315815','test89.demo.','00000000089','192.168.4.89'),(91,'4707846405888283111','test90.demo.','00000000090','192.168.4.90'),(92,'4707846410183250407','test91.demo.','00000000091','192.168.4.91'),(93,'4707846414478217703','test92.demo.','00000000092','192.168.4.92'),(94,'4707846418773184999','test93.demo.','00000000093','192.168.4.93'),(95,'4707846423068152295','test94.demo.','00000000094','192.168.4.94'),(96,'4707846427363119591','test95.demo.','00000000095','192.168.4.95'),(97,'4707846431658086887','test96.demo.','00000000096','192.168.4.96'),(98,'4707846435953054183','test97.demo.','00000000097','192.168.4.97'),(99,'4707846440248021479','test98.demo.','00000000098','192.168.4.98'),(100,'4707846444542988775','test99.demo.','00000000099','192.168.4.99');
+/*!40000 ALTER TABLE `host_ids` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_policy_ts`
+--
+
+DROP TABLE IF EXISTS `host_policy_ts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_policy_ts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(64) NOT NULL,
+  `policy` varchar(128) NOT NULL,
+  `time_stamp` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`policy`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_policy_ts`
+--
+
+LOCK TABLES `host_policy_ts` WRITE;
+/*!40000 ALTER TABLE `host_policy_ts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_policy_ts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_sfqdn`
+--
+
+DROP TABLE IF EXISTS `host_sfqdn`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_sfqdn` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `fqdn` varchar(256) NOT NULL,
+  `proxy_required` bit(1) DEFAULT b'0',
+  `carriergrade` bit(1) DEFAULT b'0',
+  `protocol` tinyint(1) unsigned DEFAULT '0',
+  `port` varchar(128) DEFAULT NULL,
+  `loose_packet` smallint(2) DEFAULT NULL,
+  `raw_data` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fqdn` (`fqdn`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_sfqdn`
+--
+
+LOCK TABLES `host_sfqdn` WRITE;
+/*!40000 ALTER TABLE `host_sfqdn` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_sfqdn` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-12-23 20:51:23

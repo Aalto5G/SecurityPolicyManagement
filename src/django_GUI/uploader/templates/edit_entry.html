@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% load crispy_forms_tags %}
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+    <meta property="og:description" content="Bootstrap django-datetime-widget is a simple and clean widget for DateField, Timefiled and DateTimeField in Django framework. It is based on Bootstrap datetime picker, supports both Bootstrap 3 and Bootstrap 2" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    {% if form %}
+    {{ form.media }}
+    {% endif %}
+</head>
+
+<style>
+body {
+	background: url({% static 'background3.jpg' %}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+}
+
+</style>
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse">
+      <a class="nav navbar-brand" href="{% url 'main' %}" onclick="{% url 'main' %}"><font color="white">Policy Management Interface</font></a>
+      <a class="nav navbar-brand" href="{% url 'main' %}"><font color="white">Home</font></a>
+      <a class="nav navbar-brand navbar-right" href="{% url 'logout' %}"><font color="white">Logout {{ user.first_name }}</font></a>
+    </div>
+
+  </div>
+</nav>
+
+<br>
+<br>
+
+
+
+
+
+	<div class="col-lg-1">
+	</div>
+	<div class="col-lg-9">
+<br>
+<br>
+        <h1>Add in {{table_name}}</h1>
+<br>
+<br>
+<p><font color="red"><b>{{ message }}</b></font></p>
+<form name="table" action="#" method="POST" enctype="multipart/form-data" id="table">
+	{% csrf_token %} 
+<table>
+  {{ form|crispy }}
+</table>
+<br>
+
+<br>
+
+	   <div class="col-md-3" >
+     <input class="btn btn-lg btn-primary btn-block " data-disable type="submit" value="Enter"></input>
+</form>
+    <br>
+        <a href="../../{{table_name}}"><input class="btn btn-lg btn-primary btn-block " data-disable value="Back"></input></a>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Sample Policy for Current Table:<br>
+{{sample_policy}}
+
+</html>
+
+
+
+

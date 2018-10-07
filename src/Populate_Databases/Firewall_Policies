@@ -1,0 +1,64 @@
+
+
+insert into host_ids (uuid, fqdn, msisdn, ipv4, username) values ('45612319784651234427','nest0.gwa.cesproto.re2ee.org.','0000000010','192.168.0.10','jesus_nest');
+
+
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','GROUP','','IPS_GROUP_POSTPAID');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','CIRCULARPOOL','','{"max": "100" }');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','CARRIERGRADE','','{"ipv4": "192.168.0.10"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','CARRIERGRADE','','{"ipv4": "192.168.0.11"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','CARRIERGRADE','','{"ipv4": "192.168.0.12"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','CARRIERGRADE','','{"ipv4": "192.168.0.13"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','CARRIERGRADE','','{"ipv4": "192.168.0.14"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','SFQDN','','{"fqdn":"nest0.gwa.demo.",  "proxy_required":false, "carriergrade": true}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','SFQDN','','{"fqdn":"www.nest0.gwa.demo.",  "proxy_required": true, "carriergrade":false}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','SFQDN','','{"fqdn":"sip.nest0.gwa.demo.",  "proxy_required": true , "carriergrade": false}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','FIREWALL','FIREWALL_ADMIN','{"priority": 0,   "direction": "EGRESS", "protocol": "17", "udp":{"dport": "53"}, "target": "REJECT", "hashlimit": {"hashlimit-above":"5/sec", "hashlimit-burst":"50", "hashlimit-name":"DnsLanHosts", "hashlimit-mode":"srcip", "hashlimit-htable-expire":"1001"}, "comment":{"comment":"Host DNS limit"}}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','FIREWALL','FIREWALL_USER','{"priority": 100, "direction": "EGRESS","target": "ACCEPT", "comment":{"comment":"Allow outgoing"}}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('45612319784651234427','FIREWALL','FIREWALL_USER','{"priority": 100, "direction": "INGRESS","target": "ACCEPT", "comment":{"comment":"Allow incoming"}}');
+
+
+
+insert into host_ids (uuid, fqdn, msisdn, ipv4, username) values ('78645135486734154542','test.gwa.cesproto.re2ee.org.','0000000100','192.168.0.100','jesus_testgwa');
+
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','GROUP','','IPS_GROUP_POSTPAID');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','CIRCULARPOOL','','{"max": "100"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','CARRIERGRADE','','{"ipv4": "192.168.0.100"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','CARRIERGRADE','','{"ipv4": "192.168.0.10"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','CARRIERGRADE','','{"ipv4": "192.168.0.11"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','CARRIERGRADE','','{"ipv4": "192.168.0.12"}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"test.gwa.cesproto.re2ee.org.",  "proxy_required":false, "carriergrade": false}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"www.test.gwa.cesproto.re2ee.org.", "proxy_required": true , "carriergrade": false}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"sip.test.gwa.cesproto.re2ee.org.", "proxy_required": true , "carriergrade": false}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"icmp.test.gwa.cesproto.re2ee.org.", "proxy_required": false, "carriergrade": false, "protocol": 1,"port": 0}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"ping.test.gwa.cesproto.re2ee.org.",  "proxy_required": false, "carriergrade": false, "protocol": 1, "port": 0}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"tcp.test.gwa.cesproto.re2ee.org.", "proxy_required": false, "carriergrade": false, "protocol": 6,"port": 0}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"udp.test.gwa.cesproto.re2ee.org.",  "proxy_required": false, "carriergrade": false, "protocol": 17,"port": 0}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"sctp.test.gwa.cesproto.re2ee.org.",  "proxy_required": false, "carriergrade": false, "protocol": 132,  "port": 0}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"ssh.test.gwa.cesproto.re2ee.org.", "proxy_required": false, "carriergrade": false, "protocol": 6, "port": 22}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"tcp1234.test.gwa.cesproto.re2ee.org.",  "proxy_required": false, "carriergrade": false, "protocol": 6, "port": 1234 }');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"udp1234.test.gwa.cesproto.re2ee.org.",  "proxy_required": false, "carriergrade": false, "protocol": 17,"port": 1234, "loose_packet": 3 }');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','SFQDN','','{"fqdn":"sctp1234.test.gwa.cesproto.re2ee.org.",  "proxy_required": false, "carriergrade": false, "protocol": 132,  "port": 1234 }');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_ADMIN','{"priority": 0,   "direction": "EGRESS", "protocol": "17", "udp":{"dport": "53"}, "target": "REJECT", "hashlimit": {"hashlimit-above":"5/sec", "hashlimit-burst":"50", "hashlimit-name":"DnsLanHosts", "hashlimit-mode":"srcip", "hashlimit-htable-expire":"1001"}, "comment":{"comment":"Host DNS limit"}}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','{"priority": 0,   "direction": "EGRESS", "protocol": "17", "udp":{"dport": "53"}, "target": "REJECT", "string": {"algo":"bm", "hex-string":"|04|nsfw"}, "comment":{"comment":"Forbidden DNS domain"}}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','{"priority": 10,  "direction": "INGRESS", "src": "195.148.125.201/32", "protocol": "1", "icmp":{"icmp-type":"8/0"}, "target": "ACCEPT", "comment":{"comment":"Allow incoming ICMP"}}');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+insert into firewall_policies (uuid,types,sub_type,policy_element) values ('78645135486734154542','FIREWALL','FIREWALL_USER','');
+
+
+{'priority': 10,  'direction': 'INGRESS', 'src': '195.148.125.201/32',                                              'target': 'DROP',   'comment':{'comment':'Deny all incoming'}}
+            - {'priority': 50,  'direction': 'INGRESS', 'protocol': '6',   'tcp':{'dport': '12345'},                         'target': 'DROP',   'comment':{'comment':'Deny port 12345'}}
+            - {'priority': 50,  'direction': 'INGRESS', 'protocol': '17',  'udp':{'dport': '12345'},                         'target': 'DROP',   'comment':{'comment':'Deny port 12345'}}
+            - {'priority': 50,  'direction': 'INGRESS', 'protocol': '132', 'sctp':{'dport': '12345'},                        'target': 'DROP',   'comment':{'comment':'Deny port 12345'}}
+            - {'priority': 50,  'direction': 'EGRESS',  'dst': '8.8.4.4/32', 'protocol': '17', 'udp':{'dport': '53'},        'target': 'ACCEPT', 'comment':{'comment':'Allow DNS to Google#2'}}
+            - {'priority': 50,  'direction': 'EGRESS',  'dst': '8.8.8.8/32', 'protocol': '17', 'udp':{'dport': '53'},        'target': 'DROP',   'comment':{'comment':'Deny  DNS to Google#1'}}
+            - {'priority': 100, 'direction': 'EGRESS',                                                                       'target': 'ACCEPT', 'comment':{'comment':'Allow outgoing'}}
+            - {'priority': 100, 'direction': 'INGRESS',                                                                      'target': 'ACCEPT', 'comment':{'comment':'Allow incoming'}}
+
+

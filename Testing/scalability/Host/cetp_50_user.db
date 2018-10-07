@@ -1,0 +1,585 @@
+-- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
+--
+-- Host: localhost    Database: host_policies
+-- ------------------------------------------------------
+-- Server version	5.7.20-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ces_negotiation_policy`
+--
+
+DROP TABLE IF EXISTS `ces_negotiation_policy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_negotiation_policy` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trans_protocol` varchar(16) DEFAULT NULL,
+  `link_alias` varchar(128) DEFAULT NULL,
+  `dest_ces` varchar(128) DEFAULT NULL,
+  `reputation` varchar(48) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `uid` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`),
+  UNIQUE KEY `trans_protocol` (`trans_protocol`,`link_alias`,`dest_ces`,`reputation`,`direction`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_negotiation_policy`
+--
+
+LOCK TABLES `ces_negotiation_policy` WRITE;
+/*!40000 ALTER TABLE `ces_negotiation_policy` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_negotiation_policy` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_available`
+--
+
+DROP TABLE IF EXISTS `ces_policy_available`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_available` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_available`
+--
+
+LOCK TABLES `ces_policy_available` WRITE;
+/*!40000 ALTER TABLE `ces_policy_available` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_available` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_offered`
+--
+
+DROP TABLE IF EXISTS `ces_policy_offered`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_offered` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_offered`
+--
+
+LOCK TABLES `ces_policy_offered` WRITE;
+/*!40000 ALTER TABLE `ces_policy_offered` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_offered` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_params`
+--
+
+DROP TABLE IF EXISTS `ces_policy_params`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_params` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trans_protocol` varchar(16) DEFAULT NULL,
+  `link_alias` varchar(128) DEFAULT NULL,
+  `dest_ces` varchar(128) DEFAULT NULL,
+  `reputation` varchar(48) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `valid` bit(1) DEFAULT NULL,
+  `parameters` varchar(128) DEFAULT NULL,
+  `value` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `trans_protocol` (`trans_protocol`,`link_alias`,`dest_ces`,`reputation`,`direction`,`valid`,`parameters`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_params`
+--
+
+LOCK TABLES `ces_policy_params` WRITE;
+/*!40000 ALTER TABLE `ces_policy_params` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_params` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ces_policy_required`
+--
+
+DROP TABLE IF EXISTS `ces_policy_required`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ces_policy_required` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  `constraints` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ces_policy_required`
+--
+
+LOCK TABLES `ces_policy_required` WRITE;
+/*!40000 ALTER TABLE `ces_policy_required` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ces_policy_required` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_carriergrade`
+--
+
+DROP TABLE IF EXISTS `host_carriergrade`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_carriergrade` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `raw_data` varchar(512) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`raw_data`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_carriergrade`
+--
+
+LOCK TABLES `host_carriergrade` WRITE;
+/*!40000 ALTER TABLE `host_carriergrade` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_carriergrade` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_control_params`
+--
+
+DROP TABLE IF EXISTS `host_cetp_control_params`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_control_params` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `parameters` varchar(128) DEFAULT NULL,
+  `value` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`direction`,`parameters`)
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_control_params`
+--
+
+LOCK TABLES `host_cetp_control_params` WRITE;
+/*!40000 ALTER TABLE `host_cetp_control_params` DISABLE KEYS */;
+INSERT INTO `host_cetp_control_params` VALUES (1,'test0.demo.','*','*','caep','[\"195.148.124.145\"]'),(2,'test1.demo.','*','*','caep','[\"195.148.124.145\"]'),(3,'test2.demo.','*','*','caep','[\"195.148.124.145\"]'),(4,'test3.demo.','*','*','caep','[\"195.148.124.145\"]'),(5,'test4.demo.','*','*','caep','[\"195.148.124.145\"]'),(6,'test5.demo.','*','*','caep','[\"195.148.124.145\"]'),(7,'test6.demo.','*','*','caep','[\"195.148.124.145\"]'),(8,'test7.demo.','*','*','caep','[\"195.148.124.145\"]'),(9,'test8.demo.','*','*','caep','[\"195.148.124.145\"]'),(10,'test9.demo.','*','*','caep','[\"195.148.124.145\"]'),(11,'test10.demo.','*','*','caep','[\"195.148.124.145\"]'),(12,'test11.demo.','*','*','caep','[\"195.148.124.145\"]'),(13,'test12.demo.','*','*','caep','[\"195.148.124.145\"]'),(14,'test13.demo.','*','*','caep','[\"195.148.124.145\"]'),(15,'test14.demo.','*','*','caep','[\"195.148.124.145\"]'),(16,'test15.demo.','*','*','caep','[\"195.148.124.145\"]'),(17,'test16.demo.','*','*','caep','[\"195.148.124.145\"]'),(18,'test17.demo.','*','*','caep','[\"195.148.124.145\"]'),(19,'test18.demo.','*','*','caep','[\"195.148.124.145\"]'),(20,'test19.demo.','*','*','caep','[\"195.148.124.145\"]'),(21,'test20.demo.','*','*','caep','[\"195.148.124.145\"]'),(22,'test21.demo.','*','*','caep','[\"195.148.124.145\"]'),(23,'test22.demo.','*','*','caep','[\"195.148.124.145\"]'),(24,'test23.demo.','*','*','caep','[\"195.148.124.145\"]'),(25,'test24.demo.','*','*','caep','[\"195.148.124.145\"]'),(26,'test25.demo.','*','*','caep','[\"195.148.124.145\"]'),(27,'test26.demo.','*','*','caep','[\"195.148.124.145\"]'),(28,'test27.demo.','*','*','caep','[\"195.148.124.145\"]'),(29,'test28.demo.','*','*','caep','[\"195.148.124.145\"]'),(30,'test29.demo.','*','*','caep','[\"195.148.124.145\"]'),(31,'test30.demo.','*','*','caep','[\"195.148.124.145\"]'),(32,'test31.demo.','*','*','caep','[\"195.148.124.145\"]'),(33,'test32.demo.','*','*','caep','[\"195.148.124.145\"]'),(34,'test33.demo.','*','*','caep','[\"195.148.124.145\"]'),(35,'test34.demo.','*','*','caep','[\"195.148.124.145\"]'),(36,'test35.demo.','*','*','caep','[\"195.148.124.145\"]'),(37,'test36.demo.','*','*','caep','[\"195.148.124.145\"]'),(38,'test37.demo.','*','*','caep','[\"195.148.124.145\"]'),(39,'test38.demo.','*','*','caep','[\"195.148.124.145\"]'),(40,'test39.demo.','*','*','caep','[\"195.148.124.145\"]'),(41,'test40.demo.','*','*','caep','[\"195.148.124.145\"]'),(42,'test41.demo.','*','*','caep','[\"195.148.124.145\"]'),(43,'test42.demo.','*','*','caep','[\"195.148.124.145\"]'),(44,'test43.demo.','*','*','caep','[\"195.148.124.145\"]'),(45,'test44.demo.','*','*','caep','[\"195.148.124.145\"]'),(46,'test45.demo.','*','*','caep','[\"195.148.124.145\"]'),(47,'test46.demo.','*','*','caep','[\"195.148.124.145\"]'),(48,'test47.demo.','*','*','caep','[\"195.148.124.145\"]'),(49,'test48.demo.','*','*','caep','[\"195.148.124.145\"]'),(50,'test49.demo.','*','*','caep','[\"195.148.124.145\"]');
+/*!40000 ALTER TABLE `host_cetp_control_params` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_id`
+--
+
+DROP TABLE IF EXISTS `host_cetp_id`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_id` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `id_type` varchar(64) DEFAULT NULL,
+  `value` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`id_type`,`value`)
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_id`
+--
+
+LOCK TABLES `host_cetp_id` WRITE;
+/*!40000 ALTER TABLE `host_cetp_id` DISABLE KEYS */;
+INSERT INTO `host_cetp_id` VALUES (1,'test0.demo.','fqdn','test0.demo.'),(2,'test1.demo.','fqdn','test1.demo.'),(3,'test2.demo.','fqdn','test2.demo.'),(4,'test3.demo.','fqdn','test3.demo.'),(5,'test4.demo.','fqdn','test4.demo.'),(6,'test5.demo.','fqdn','test5.demo.'),(7,'test6.demo.','fqdn','test6.demo.'),(8,'test7.demo.','fqdn','test7.demo.'),(9,'test8.demo.','fqdn','test8.demo.'),(10,'test9.demo.','fqdn','test9.demo.'),(11,'test10.demo.','fqdn','test10.demo.'),(12,'test11.demo.','fqdn','test11.demo.'),(13,'test12.demo.','fqdn','test12.demo.'),(14,'test13.demo.','fqdn','test13.demo.'),(15,'test14.demo.','fqdn','test14.demo.'),(16,'test15.demo.','fqdn','test15.demo.'),(17,'test16.demo.','fqdn','test16.demo.'),(18,'test17.demo.','fqdn','test17.demo.'),(19,'test18.demo.','fqdn','test18.demo.'),(20,'test19.demo.','fqdn','test19.demo.'),(21,'test20.demo.','fqdn','test20.demo.'),(22,'test21.demo.','fqdn','test21.demo.'),(23,'test22.demo.','fqdn','test22.demo.'),(24,'test23.demo.','fqdn','test23.demo.'),(25,'test24.demo.','fqdn','test24.demo.'),(26,'test25.demo.','fqdn','test25.demo.'),(27,'test26.demo.','fqdn','test26.demo.'),(28,'test27.demo.','fqdn','test27.demo.'),(29,'test28.demo.','fqdn','test28.demo.'),(30,'test29.demo.','fqdn','test29.demo.'),(31,'test30.demo.','fqdn','test30.demo.'),(32,'test31.demo.','fqdn','test31.demo.'),(33,'test32.demo.','fqdn','test32.demo.'),(34,'test33.demo.','fqdn','test33.demo.'),(35,'test34.demo.','fqdn','test34.demo.'),(36,'test35.demo.','fqdn','test35.demo.'),(37,'test36.demo.','fqdn','test36.demo.'),(38,'test37.demo.','fqdn','test37.demo.'),(39,'test38.demo.','fqdn','test38.demo.'),(40,'test39.demo.','fqdn','test39.demo.'),(41,'test40.demo.','fqdn','test40.demo.'),(42,'test41.demo.','fqdn','test41.demo.'),(43,'test42.demo.','fqdn','test42.demo.'),(44,'test43.demo.','fqdn','test43.demo.'),(45,'test44.demo.','fqdn','test44.demo.'),(46,'test45.demo.','fqdn','test45.demo.'),(47,'test46.demo.','fqdn','test46.demo.'),(48,'test47.demo.','fqdn','test47.demo.'),(49,'test48.demo.','fqdn','test48.demo.'),(50,'test49.demo.','fqdn','test49.demo.');
+/*!40000 ALTER TABLE `host_cetp_id` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_negotiations`
+--
+
+DROP TABLE IF EXISTS `host_cetp_negotiations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_negotiations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `reputation` varchar(48) DEFAULT NULL,
+  `direction` varchar(16) DEFAULT NULL,
+  `uid` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`reputation`,`direction`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_negotiations`
+--
+
+LOCK TABLES `host_cetp_negotiations` WRITE;
+/*!40000 ALTER TABLE `host_cetp_negotiations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_negotiations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_payload`
+--
+
+DROP TABLE IF EXISTS `host_cetp_payload`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_payload` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `payload_type` varchar(64) DEFAULT NULL,
+  `value` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`payload_type`,`value`)
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_payload`
+--
+
+LOCK TABLES `host_cetp_payload` WRITE;
+/*!40000 ALTER TABLE `host_cetp_payload` DISABLE KEYS */;
+INSERT INTO `host_cetp_payload` VALUES (1,'test0.demo.','*','eth','1'),(2,'test1.demo.','*','eth','1'),(3,'test2.demo.','*','eth','1'),(4,'test3.demo.','*','eth','1'),(5,'test4.demo.','*','eth','1'),(6,'test5.demo.','*','eth','1'),(7,'test6.demo.','*','eth','1'),(8,'test7.demo.','*','eth','1'),(9,'test8.demo.','*','eth','1'),(10,'test9.demo.','*','eth','1'),(11,'test10.demo.','*','eth','1'),(12,'test11.demo.','*','eth','1'),(13,'test12.demo.','*','eth','1'),(14,'test13.demo.','*','eth','1'),(15,'test14.demo.','*','eth','1'),(16,'test15.demo.','*','eth','1'),(17,'test16.demo.','*','eth','1'),(18,'test17.demo.','*','eth','1'),(19,'test18.demo.','*','eth','1'),(20,'test19.demo.','*','eth','1'),(21,'test20.demo.','*','eth','1'),(22,'test21.demo.','*','eth','1'),(23,'test22.demo.','*','eth','1'),(24,'test23.demo.','*','eth','1'),(25,'test24.demo.','*','eth','1'),(26,'test25.demo.','*','eth','1'),(27,'test26.demo.','*','eth','1'),(28,'test27.demo.','*','eth','1'),(29,'test28.demo.','*','eth','1'),(30,'test29.demo.','*','eth','1'),(31,'test30.demo.','*','eth','1'),(32,'test31.demo.','*','eth','1'),(33,'test32.demo.','*','eth','1'),(34,'test33.demo.','*','eth','1'),(35,'test34.demo.','*','eth','1'),(36,'test35.demo.','*','eth','1'),(37,'test36.demo.','*','eth','1'),(38,'test37.demo.','*','eth','1'),(39,'test38.demo.','*','eth','1'),(40,'test39.demo.','*','eth','1'),(41,'test40.demo.','*','eth','1'),(42,'test41.demo.','*','eth','1'),(43,'test42.demo.','*','eth','1'),(44,'test43.demo.','*','eth','1'),(45,'test44.demo.','*','eth','1'),(46,'test45.demo.','*','eth','1'),(47,'test46.demo.','*','eth','1'),(48,'test47.demo.','*','eth','1'),(49,'test48.demo.','*','eth','1'),(50,'test49.demo.','*','eth','1');
+/*!40000 ALTER TABLE `host_cetp_payload` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_policy_available`
+--
+
+DROP TABLE IF EXISTS `host_cetp_policy_available`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_policy_available` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`type`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_policy_available`
+--
+
+LOCK TABLES `host_cetp_policy_available` WRITE;
+/*!40000 ALTER TABLE `host_cetp_policy_available` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_policy_available` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_policy_offered`
+--
+
+DROP TABLE IF EXISTS `host_cetp_policy_offered`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_policy_offered` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`type`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_policy_offered`
+--
+
+LOCK TABLES `host_cetp_policy_offered` WRITE;
+/*!40000 ALTER TABLE `host_cetp_policy_offered` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_policy_offered` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_policy_required`
+--
+
+DROP TABLE IF EXISTS `host_cetp_policy_required`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_policy_required` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(256) DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `parameter` varchar(128) DEFAULT NULL,
+  `constraints` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uid` (`uid`,`type`,`parameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_policy_required`
+--
+
+LOCK TABLES `host_cetp_policy_required` WRITE;
+/*!40000 ALTER TABLE `host_cetp_policy_required` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_policy_required` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_cetp_rloc`
+--
+
+DROP TABLE IF EXISTS `host_cetp_rloc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_cetp_rloc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `local_fqdn` varchar(256) DEFAULT NULL,
+  `remote_fqdn` varchar(256) DEFAULT NULL,
+  `rloc_type` varchar(64) DEFAULT NULL,
+  `value` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `local_fqdn` (`local_fqdn`,`remote_fqdn`,`rloc_type`,`value`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_cetp_rloc`
+--
+
+LOCK TABLES `host_cetp_rloc` WRITE;
+/*!40000 ALTER TABLE `host_cetp_rloc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_cetp_rloc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_circularpool`
+--
+
+DROP TABLE IF EXISTS `host_circularpool`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_circularpool` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `raw_data` varchar(512) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`raw_data`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_circularpool`
+--
+
+LOCK TABLES `host_circularpool` WRITE;
+/*!40000 ALTER TABLE `host_circularpool` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_circularpool` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_firewall`
+--
+
+DROP TABLE IF EXISTS `host_firewall`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_firewall` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(64) NOT NULL,
+  `cesapp_id` int(11) DEFAULT NULL,
+  `type` varchar(16) NOT NULL,
+  `active` bit(1) NOT NULL DEFAULT b'1',
+  `priority` tinyint(1) NOT NULL DEFAULT '0',
+  `direction` varchar(32) NOT NULL,
+  `src` varchar(128) DEFAULT NULL,
+  `dst` varchar(128) DEFAULT NULL,
+  `sport` varchar(128) DEFAULT NULL,
+  `dport` varchar(128) DEFAULT NULL,
+  `protocol` smallint(1) DEFAULT NULL,
+  `target` varchar(16) NOT NULL,
+  `comment` varchar(256) DEFAULT NULL,
+  `raw_data` varchar(256) DEFAULT NULL,
+  `schedule_start` datetime DEFAULT NULL,
+  `schedule_end` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cesapp_id` (`cesapp_id`),
+  UNIQUE KEY `uuid` (`uuid`,`type`,`direction`,`src`,`dst`,`sport`,`dport`,`protocol`,`target`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_firewall`
+--
+
+LOCK TABLES `host_firewall` WRITE;
+/*!40000 ALTER TABLE `host_firewall` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_firewall` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_group`
+--
+
+DROP TABLE IF EXISTS `host_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `groups` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`groups`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_group`
+--
+
+LOCK TABLES `host_group` WRITE;
+/*!40000 ALTER TABLE `host_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_ids`
+--
+
+DROP TABLE IF EXISTS `host_ids`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_ids` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `fqdn` varchar(256) NOT NULL,
+  `msisdn` varchar(16) DEFAULT NULL,
+  `ipv4` varchar(16) DEFAULT NULL,
+  PRIMARY KEY (`fqdn`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `uuid` (`uuid`),
+  UNIQUE KEY `ipv4` (`ipv4`),
+  UNIQUE KEY `msisdn` (`msisdn`)
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_ids`
+--
+
+LOCK TABLES `host_ids` WRITE;
+/*!40000 ALTER TABLE `host_ids` DISABLE KEYS */;
+INSERT INTO `host_ids` VALUES (1,'480246298991202791','test0.demo.','0000000000','192.168.4.0'),(2,'3311868157925331431','test1.demo.','0000000001','192.168.4.1'),(3,'3311868162220298727','test2.demo.','0000000002','192.168.4.2'),(4,'3311868166515266023','test3.demo.','0000000003','192.168.4.3'),(5,'3311868170810233319','test4.demo.','0000000004','192.168.4.4'),(6,'3311868175105200615','test5.demo.','0000000005','192.168.4.5'),(7,'3311868179400167911','test6.demo.','0000000006','192.168.4.6'),(8,'3311868183695135207','test7.demo.','0000000007','192.168.4.7'),(9,'3311868187990102503','test8.demo.','0000000008','192.168.4.8'),(10,'3311868192285069799','test9.demo.','0000000009','192.168.4.9'),(11,'3311868196580037095','test10.demo.','00000000010','192.168.4.10'),(12,'3311868200875004391','test11.demo.','00000000011','192.168.4.11'),(13,'3311868205169971687','test12.demo.','00000000012','192.168.4.12'),(14,'3311868209464938983','test13.demo.','00000000013','192.168.4.13'),(15,'3311868213759906279','test14.demo.','00000000014','192.168.4.14'),(16,'3311868218054873575','test15.demo.','00000000015','192.168.4.15'),(17,'3311868222349840871','test16.demo.','00000000016','192.168.4.16'),(18,'3311868226644808167','test17.demo.','00000000017','192.168.4.17'),(19,'3311868230939775463','test18.demo.','00000000018','192.168.4.18'),(20,'3311868235234742759','test19.demo.','00000000019','192.168.4.19'),(21,'3311868239529710055','test20.demo.','00000000020','192.168.4.20'),(22,'3311868243824677351','test21.demo.','00000000021','192.168.4.21'),(23,'3311868248119644647','test22.demo.','00000000022','192.168.4.22'),(24,'3311868252414611943','test23.demo.','00000000023','192.168.4.23'),(25,'3311868256709579239','test24.demo.','00000000024','192.168.4.24'),(26,'4752058395506315751','test25.demo.','00000000025','192.168.4.25'),(27,'4752058399801283047','test26.demo.','00000000026','192.168.4.26'),(28,'4752058404096250343','test27.demo.','00000000027','192.168.4.27'),(29,'4752058408391217639','test28.demo.','00000000028','192.168.4.28'),(30,'4752058412686184935','test29.demo.','00000000029','192.168.4.29'),(31,'4752058416981152231','test30.demo.','00000000030','192.168.4.30'),(32,'4752058421276119527','test31.demo.','00000000031','192.168.4.31'),(33,'4752058425571086823','test32.demo.','00000000032','192.168.4.32'),(34,'4752058429866054119','test33.demo.','00000000033','192.168.4.33'),(35,'4752058434161021415','test34.demo.','00000000034','192.168.4.34'),(36,'4752058438455988711','test35.demo.','00000000035','192.168.4.35'),(37,'4752058442750956007','test36.demo.','00000000036','192.168.4.36'),(38,'4752058447045923303','test37.demo.','00000000037','192.168.4.37'),(39,'4752058451340890599','test38.demo.','00000000038','192.168.4.38'),(40,'4752058455635857895','test39.demo.','00000000039','192.168.4.39'),(41,'4752058459930825191','test40.demo.','00000000040','192.168.4.40'),(42,'4752058464225792487','test41.demo.','00000000041','192.168.4.41'),(43,'4752058468520759783','test42.demo.','00000000042','192.168.4.42'),(44,'4752058472815727079','test43.demo.','00000000043','192.168.4.43'),(45,'4752058477110694375','test44.demo.','00000000044','192.168.4.44'),(46,'4752058481405661671','test45.demo.','00000000045','192.168.4.45'),(47,'4752058485700628967','test46.demo.','00000000046','192.168.4.46'),(48,'4752058489995596263','test47.demo.','00000000047','192.168.4.47'),(49,'4752058494290563559','test48.demo.','00000000048','192.168.4.48'),(50,'4752058498585530855','test49.demo.','00000000049','192.168.4.49');
+/*!40000 ALTER TABLE `host_ids` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_policy_ts`
+--
+
+DROP TABLE IF EXISTS `host_policy_ts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_policy_ts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(64) NOT NULL,
+  `policy` varchar(128) NOT NULL,
+  `time_stamp` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`,`policy`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_policy_ts`
+--
+
+LOCK TABLES `host_policy_ts` WRITE;
+/*!40000 ALTER TABLE `host_policy_ts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_policy_ts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `host_sfqdn`
+--
+
+DROP TABLE IF EXISTS `host_sfqdn`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `host_sfqdn` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(32) NOT NULL,
+  `fqdn` varchar(256) NOT NULL,
+  `proxy_required` bit(1) DEFAULT b'0',
+  `carriergrade` bit(1) DEFAULT b'0',
+  `protocol` tinyint(1) unsigned DEFAULT '0',
+  `port` varchar(128) DEFAULT NULL,
+  `loose_packet` smallint(2) DEFAULT NULL,
+  `raw_data` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fqdn` (`fqdn`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `host_sfqdn`
+--
+
+LOCK TABLES `host_sfqdn` WRITE;
+/*!40000 ALTER TABLE `host_sfqdn` DISABLE KEYS */;
+/*!40000 ALTER TABLE `host_sfqdn` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-12-23 20:44:15

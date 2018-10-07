@@ -1,0 +1,14 @@
+
+
+
+INSERT INTO `host_carriergrade` VALUES (1,'3855054097341682151','{\"ipv4\":\"192.168.0.10\"}');
+
+INSERT INTO `host_circularpool` VALUES (1,'3855054097341682151','{\"max\":\"100\"}');
+
+INSERT INTO `host_firewall` VALUES (389873,'3855054097341682151',NULL,'FIREWALL_ADMIN',1,10,'EGRESS',NULL,NULL,NULL,'53',17,'REJECT','{\"comment\":\"Host DNS limit\"}','{\"hashlimit\": {\"hashlimit-above\":\"5/sec\", \"hashlimit-burst\":\"50\", \"hashlimit-name\":\"DnsLanHosts\", \"hashlimit-mode\":\"srcip\", \"hashlimit-htable-expire\":\"1001\"}}',NULL,NULL),(389874,'3855054097341682151',NULL,'FIREWALL_USER',1,100,'EGRESS',NULL,NULL,NULL,NULL,NULL,'ACCEPT','{\"comment\":\"Allow outgoing\"}','{}',NULL,NULL);
+
+INSERT INTO `host_group` VALUES (6,'3855054097341682151','IPS_GROUP_POSTPAID');
+
+INSERT INTO `host_ids` VALUES (7,'3855054097341682151','nest0.gwa.demo.','0000000010','192.168.0.10');
+
+INSERT INTO `host_sfqdn` VALUES (28,'3855054097341682151','sip.nest0.gwa.demo.',1,NULL,NULL,NULL,NULL,'{}');

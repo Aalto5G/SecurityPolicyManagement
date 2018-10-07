@@ -1,0 +1,2 @@
+- Error code handling in api_server.py to reply with the relevant HTTP code
+- Create function for CES to retrieve the list of usernames

@@ -1,0 +1,67 @@
+
+
+
+mysqldump -u root -p --all-databases > all_databases.sql
+sudo VBoxClient-all start
+
+
+sudo add-apt-repository ppa:mystic-mirage/pycharm
+sudo apt update
+sudo apt install pycharm-community
+
+
+
+
+
+select t1.*, t2.*,t3.* from ID_Table t1 INNER JOIN Subscription t2 on t2.Name=t1.Subscription INNER JOIN Customer_Discretion t3 on t3.Unique_ID=t1.Unique_ID where FQDN='hassaan.aalto.fi';
+
+
+select t1.*, t2.* from ID_Table t1 INNER JOIN Subscription t2 on t2.Name=t1.Subscription where FQDN='hassaan.aalto.fi';
+
+
+select t1.*, t2.* from ID_Table t1 INNER JOIN Customer_Discretion t2 on t2.Unique_ID=t1.Unique_ID where FQDN='hassaan.aalto.fi';
+
+
+
+
+host = '127.0.0.1'  # host
+password = 'take5'  # password
+user = 'root'  # user
+dataBase = 'CES_Policies'  # dataBase
+cnx = mysql.connector.connect(user=user, password=password, host=host,database=dataBase)
+retrieve = "select FQDN, MSISDN, IPv4 from ID_Table where FQDN='hassaan.aalto.fi'"
+cursor = cnx.cursor()
+cursor.execute(retrieve)
+rows = cursor.fetchall()
+print (rows)
+
+
+
+
+
+
+insert into host_firewall (uuid, cesapp_id, type, active, priority, direction, src, dst, sport, dport, protocol, target, comment, raw_data, schedule_start, schedule_end) values ((select uuid from host_ids where FQDN='nest0.gwa.demo.'),'13','FIREWALL_ADMIN',1,'10','EGRESS','1.1.2.40','2.2.2.2','50','50','14','ACCEPT','{"comment":"Host DNS limit"}','{"hashlimit":"1001"}',Null,Null),((select uuid from host_ids where FQDN='nest20.gwa.demo.'),'13','FIREWALL_ADMIN',1,'10','EGRESS','1.1.2.50','2.2.2.2','50','50','14','ACCEPT','{"comment":"Host DNS limit"}','{"hashlimit":"1001"}',Null,Null),((select uuid from host_ids where FQDN='nest0.gwa.demo.'),'13','FIREWALL_ADMIN',1,'10','EGRESS','1.1.2.60','2.2.2.2','50','50','14','ACCEPT','{"comment":"Host DNS limit"}','{"hashlimit":"1001"}',Null,Null);
+
+
+
+
+
+
+
+########################
+########################
+########################
+
+
+
+
+>>> Make subtype nullable in firewall_policies table
+
+
+
+
+
+select s.types,s.sub_type,s.policy_element, t.fqdn from firewall_policies s JOIN host_ids t on t.uuid=s.uuid;
+
+
+

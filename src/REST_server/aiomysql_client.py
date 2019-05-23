@@ -94,6 +94,7 @@ class MySQLClient(object):
             self._check_sql_query(query)
         async with self.pool.acquire() as conn:
             async with conn.cursor() as cur:
+                await cur.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED")
                 await cur.execute(query)
                 # Return iterable result, might be empty
                 return await cur.fetchall()
@@ -111,6 +112,7 @@ class MySQLClient(object):
             self._check_sql_query(query)
         async with self.pool.acquire() as conn:
             async with conn.cursor() as cur:
+                await cur.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED")
                 await cur.execute(query)
                 # Return the result, might be None
                 return await cur.fetchone()

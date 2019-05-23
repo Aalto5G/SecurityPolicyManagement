@@ -147,9 +147,11 @@ class CesApiDatabase():
             # Get uuid for the user based on given id
             query = "select * from host_ids where uuid = '{}'".format(uuid)
             data = await self.db_host.fetchone(query)
+            if not data:
+                return False
             return True
         except:
-            return None
+            return False
 
 
     async def _cetp_identity_check_exist_uuid(self, uuid):
@@ -162,9 +164,11 @@ class CesApiDatabase():
             # Get uuid for the user based on given id
             query = "select * from host_policy_identity where uuid = '{}'".format(uuid)
             data = await self.db_host.fetchone(query)
+            if not data:
+                return False
             return True
         except:
-            return None
+            return False
 
     async def _ces_identity_check_exist_uuid(self, uuid):
         '''
@@ -176,9 +180,11 @@ class CesApiDatabase():
             # Get uuid for the user based on given id
             query = "select * from ces_policy_identity where uuid = '{}'".format(uuid)
             data = await self.db_host.fetchone(query)
+            if not data:
+                return False
             return True
         except:
-            return None
+            return False
 
     ############################################################
     ############################################################

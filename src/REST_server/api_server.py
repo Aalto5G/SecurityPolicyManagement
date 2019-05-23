@@ -78,7 +78,10 @@ class CES_API:
 
 
     def exception_handler(self,e):
-        print ('\n\n\n' , type(e), e.code, '\n\n\n')
+        try:
+            print ('\n\n\n' , type(e), e.code, '\n\n\n')
+        except:
+            print ('\n\n\n' , e, '\n\n\n')
         logger.warning('Exception Occured Printing Exception ={}\n'.format(str(e)))
         if type(e) is pymysql.err.ProgrammingError:
             http_code = e.args[0]

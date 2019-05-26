@@ -11,7 +11,8 @@ pip3 install django-crispy-forms==1.6.1
 pip3 install django-datetime-widget==0.9.3
 pip3 install dnspython3
 pip3 install aiohttp==2.3.9
-pip3 install aiomysql==0.0.12
+#pip3 install aiomysql==0.0.12
+pip3 install mysqlclient==1.4.2.post1
 pip3 install httplib2==0.9.1
 pip3 install mysqlclient==1.3.10
 pip3 install mysql-connector==2.1.4

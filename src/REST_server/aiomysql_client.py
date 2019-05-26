@@ -24,7 +24,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import aiomysql
+import MySQLdb
 
 from errorsfile import ForbiddenSQLQuery
 
@@ -49,23 +49,20 @@ class MySQLClient(object):
         self.password = password
         self.database = database
 
-    async def connect(self):
+    def connect(self):
         '''
         Create Pool of connections to database
         '''
-        self.pool = await aiomysql.create_pool(host=self.host, port=self.port,
-                                               user=self.user, password=self.password,
-                                               db=self.database,
-                                               minsize=1, maxsize=20)
+        self.conn = MySQLdb.connect(passwd=self.password, user=self.user, host=self.host, port=self.port, db=self.database)
+        self.conn.autocommit(True)
 
-    async def close(self):
+    def close(self):
         '''
         Closing all connections
         '''
-        self.pool.close()
-        await self.pool.wait_closed()
+        self.conn.close()
 
-    async def execute(self, query, check=True):
+    def execute(self, query, check=True):
         '''
         Only executes the SQL query.
         It may throw exceptions, e.g. pymysql.err.ProgrammingError
@@ -76,12 +73,11 @@ class MySQLClient(object):
         '''
         if check:
             self._check_sql_query(query)
-        async with self.pool.acquire() as conn:
-            async with conn.cursor() as cur:
-                await cur.execute(query)
-                return await conn.commit()
+        cur = self.conn.cursor()
+        cur.execute(query)
+        cur.commit()
 
-    async def fetchall(self, query, check=True):
+    def fetchall(self, query, check=True):
         '''
         Executes the SQL query and fetchall(). Returns the following:
            On success: returns an iterable of results i.e. (('723162224029077991',),)
@@ -92,14 +88,11 @@ class MySQLClient(object):
         '''
         if check:
             self._check_sql_query(query)
-        async with self.pool.acquire() as conn:
-            async with conn.cursor() as cur:
-                await cur.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED")
-                await cur.execute(query)
-                # Return iterable result, might be empty
-                return await cur.fetchall()
+        cur = self.conn.cursor()
+        cur.execute(query)
+        return cur.fetchall()
 
-    async def fetchone(self, query, check=True):
+    def fetchone(self, query, check=True):
         '''
         Executes the SQL query and fetchone(). Returns the following:
             On success: returns an tuple of the result i.e. (9, '723162224029077991', 'Prepaid')
@@ -110,12 +103,9 @@ class MySQLClient(object):
         '''
         if check:
             self._check_sql_query(query)
-        async with self.pool.acquire() as conn:
-            async with conn.cursor() as cur:
-                await cur.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED")
-                await cur.execute(query)
-                # Return the result, might be None
-                return await cur.fetchone()
+        cur = self.conn.cursor()
+        cur.execute(query)
+        return cur.fetchone()
 
     def _check_sql_query(self, query):
         '''

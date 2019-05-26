@@ -63,9 +63,9 @@ http_codes =  {1001 : 601,      #"Query Parameters not supported",
 class CES_API:
 
     #Connectiong to the database
-    async def connect(self):
+    def connect(self):
         self.api_db = CesApiDatabase()
-        await self.api_db.connect()
+        self.api_db.connect()
 
 
     def encoding_data(self, data):
@@ -213,7 +213,7 @@ class CES_API:
         try:
             if policy_name:
                 policy_name=policy_name.upper()
-            data = await self.api_db.firewall_policy_user_get(id_type.lower(), id_value, policy_name, format)
+            data = self.api_db.firewall_policy_user_get(id_type.lower(), id_value, policy_name, format)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -238,7 +238,7 @@ class CES_API:
         logger.info('------2------------------------------------------\nInput Parameters: \n Policy_Table_name = {}\nQuery Parameters = {}\nID = {}\n'.format(table_name, query_parameters, id_instance))
 
         try:
-            data = await self.api_db.host_policy_get(table_name.upper(), query_parameters, id_instance)
+            data = self.api_db.host_policy_get(table_name.upper(), query_parameters, id_instance)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -262,7 +262,7 @@ class CES_API:
         logger.info('\n\n------3------------------------------------------\nInput Parameters: \n Policy_Table_name = {}\nQuery Parameters = {}\n'.format(table_name,query_parameters))
 
         try:
-            data = await self.api_db.host_policy_get(table_name.upper(), query_parameters)
+            data = self.api_db.host_policy_get(table_name.upper(), query_parameters)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -287,7 +287,7 @@ class CES_API:
         try:
             if type(data_received) is not list or type(data_received[0]) is not dict:
                 raise API_ERROR(1005, 'Only accepted data format is list of dict')
-            data = await self.api_db.host_policy_insert(table_name.upper(), data_received)
+            data = self.api_db.host_policy_insert(table_name.upper(), data_received)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -317,7 +317,7 @@ class CES_API:
             if not id_instance.isdigit() or type(data_received) is not dict:
                 raise API_ERROR(1005, 'Only Accepted parameter for ID is integer. ID received = {}. and only accepted format '
                                       'is dict. Type received = {}'.format(id_instance,type(data_received)))
-            data = await self.api_db.host_policy_update(table_name.upper(), data_received, id_instance)
+            data = self.api_db.host_policy_update(table_name.upper(), data_received, id_instance)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -355,7 +355,7 @@ class CES_API:
         logger.info('\n\n------6------------------------------------------\nInput PUT Parameters: \n Policy Name = {}\nLocal FQDN = {}\n Remote FQDN = {}\n Direction = {}'.format(policy_name, local_fqdn, remote_fqdn,direction))
 
         try:
-            data = await self.api_db.host_cetp_policy_get(local_fqdn, remote_fqdn, direction, policy_name)
+            data = self.api_db.host_cetp_policy_get(local_fqdn, remote_fqdn, direction, policy_name)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -389,7 +389,7 @@ class CES_API:
         logger.info('\n\n------7-----------------------------------------\nInput Parameters: \n Policy Name = {}\nCES ID = {}\n Trans_Protocol = {}\n'.format(policy_name,host_ces_id, protocol))
 
         try:
-            data = await self.api_db.ces_policy_get(host_ces_id, protocol)
+            data = self.api_db.ces_policy_get(host_ces_id, protocol)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -414,7 +414,7 @@ class CES_API:
         logger.info('\n\n------8-----------------------------------------\nInput Parameters: \n Policy_Type = {}'.format(policy_name))
 
         try:
-            data = await self.api_db.bootstrap_get_policies_ces(policy_name)
+            data = self.api_db.bootstrap_get_policies_ces(policy_name)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -436,7 +436,7 @@ class CES_API:
         logger.info('\n\n------9-----------------------------------------\nInput Parameters: \n ID = {}\n'.format(id_instance))
 
         try:
-            data = await self.api_db.bootstrap_get_policies(policy_type, id_instance)
+            data = self.api_db.bootstrap_get_policies(policy_type, id_instance)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -458,7 +458,7 @@ class CES_API:
         try:
             if not policy_type:
                 policy_type=''
-            data = await self.api_db.bootstrap_get_policies(policy_type.upper())
+            data = self.api_db.bootstrap_get_policies(policy_type.upper())
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -482,7 +482,7 @@ class CES_API:
         try:
             if type(data_received) is not list or type(data_received[0]) is not dict:
                 raise API_ERROR(1005, 'Only accepted data format is list of dict')
-            data = await self.api_db.bootstrap_insert(data_received)
+            data = self.api_db.bootstrap_insert(data_received)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -509,7 +509,7 @@ class CES_API:
             if not id_instance.isdigit() or type(data_received) is not dict:
                 raise API_ERROR(1005, 'Only Accepted parameter for ID is integer. ID received = {}. and only accepted format '
                                       'is dict. Type received = {}'.format(id_instance,type(data_received)))
-            data = await self.api_db.bootstrap_update(data_received, id_instance)
+            data = self.api_db.bootstrap_update(data_received, id_instance)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -546,7 +546,7 @@ class CES_API:
                     raise API_ERROR(1005,'Only Accepted parameter for ID is integer or comma separated integers. '
                                          'ID received = {}'.format(id_instance))
                 id_instance = id_instance if ',' not in id_instance else id_instance.split(',')
-            data = await self.api_db.policy_delete(table_name.upper(), query_parameters, id_instance)
+            data = self.api_db.policy_delete(table_name.upper(), query_parameters, id_instance)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -570,7 +570,7 @@ class CES_API:
                 if not id_instance.isdigit() and all(item.isdigit() == True for item in id_instance.split(',')) != True:
                     raise API_ERROR(1005,'Only Accepted parameter for ID is integer or comma separated integers. ID received = {}'.format(id_instance))
                 id_instance = id_instance if ',' not in id_instance else id_instance.split(',')
-            data = await self.api_db.host_bootstrap_delete(id_instance)
+            data = self.api_db.host_bootstrap_delete(id_instance)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -588,7 +588,7 @@ class CES_API:
             if not id_instance or not id_instance.isdigit() and all(item.isdigit() == True for item in id_instance.split(',')) != True:
                 raise API_ERROR(1005, 'Only Accepted parameter for ID is integer or comma separated integers. ID received = {}'.format(id_instance))
             id_instance = id_instance if ',' not in id_instance else id_instance.split(',')
-            data = await self.api_db.policy_delete_cesapp('HOST', 'FIREWALL', id_instance)
+            data = self.api_db.policy_delete_cesapp('HOST', 'FIREWALL', id_instance)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -602,7 +602,7 @@ class CES_API:
         logger.info('\n\n------16-----------------------------------------\nInput Parameters: \n Deleting all policies from Firewall table having CES ID'.format(id_instance))
 
         try:
-            data = await self.api_db.policy_delete_cesapp('HOST', 'FIREWALL', None)
+            data = self.api_db.policy_delete_cesapp('HOST', 'FIREWALL', None)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception  as e:
             http_code, error_reason = self.exception_handler(e)
@@ -631,7 +631,7 @@ class CES_API:
         logger.info('\n\n------17-----------------------------------------\nInput Parameters: \n Username = {}\n Password = {}\n IP = {}\n TTL = {}'.format(username, password, ip, ttl))
 
         try:
-            data = await self.api_db.user_registration(username, password, ip, ttl)
+            data = self.api_db.user_registration(username, password, ip, ttl)
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception as e:
             http_code, error_reason = self.exception_handler(e)
@@ -651,7 +651,7 @@ class CES_API:
         logger.info('\n\n------18-----------------------------------------\nInput Parameters: \n Table Name = {}'.format(table_name))
 
         try:
-            data = await self.api_db.host_column_names(table_name.upper())
+            data = self.api_db.host_column_names(table_name.upper())
             resp = await self.response_creater(request, 200, 'OK', data, True)
         except Exception as e:
             http_code, error_reason = self.exception_handler(e)
@@ -670,7 +670,7 @@ class CES_API:
 async def build_server(loop, address, port, sslcontext):
     app = web.Application(loop=loop)
     object = CES_API()
-    await object.connect()
+    object.connect()
 
 
     ########################################

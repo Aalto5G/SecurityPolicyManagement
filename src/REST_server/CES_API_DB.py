@@ -65,28 +65,28 @@ class CesApiDatabase():
         return sock
 
 
-    async def connect(self):
+    def connect(self):
         '''
         Create connection to the two different databases which would be used in relevant functions
         '''
         if not isinstance(self.db_host, MySQLClient):
             self.db_host = MySQLClient(host='localhost', port=3306, user='root', password='take5',
                                        database='Session_Policies')
-            await self.db_host.connect()
+            self.db_host.connect()
 
 
         if not isinstance(self.db_bootstrap, MySQLClient):
             self.db_bootstrap = MySQLClient(host='localhost', port=3306, user='root', password='take5',
                                             database='Bootstrap_Policies')
-            await self.db_bootstrap.connect()
+            self.db_bootstrap.connect()
 
 
-    async def disconnect(self):
+    def disconnect(self):
         '''
         Close all the connections to all the databases
         '''
-        await self.db_host.close()
-        await self.db_bootstrap.close()
+        self.db_host.close()
+        self.db_bootstrap.close()
 
 
     def _register_function_pointers(self):
@@ -118,7 +118,7 @@ class CesApiDatabase():
     # Testing Functions:
 
 
-    async def _host_get_user_ids(self, id_type, id_value):
+    def _host_get_user_ids(self, id_type, id_value):
         '''
         Get all IDs of user and raise error if no user exists with provided credentials
         :param id_type: Type of query. can be FQDN, IP, MSISDN or Username
@@ -130,14 +130,14 @@ class CesApiDatabase():
             raise API_ERROR(1001, error)
         # Get ids for the user based on given id
         query = "select uuid,fqdn,msisdn,ipv4 from host_ids where {} = '{}'".format(id_type, id_value)
-        data = await self.db_host.fetchone(query)
+        data = self.db_host.fetchone(query)
         if not data:
             error = "No user found for id_type={} and id_value={}".format(id_type, id_value)
             raise API_ERROR(1002, error)
         return data
 
 
-    async def _host_check_exist_uuid(self, uuid):
+    def _host_check_exist_uuid(self, uuid):
         '''
         Check if provided UUID already exists in database. If not then None is returned or if it does then True is returned
         :param uuid: UUID value to be searched in database table
@@ -146,7 +146,7 @@ class CesApiDatabase():
         try:
             # Get uuid for the user based on given id
             query = "select * from host_ids where uuid = '{}'".format(uuid)
-            data = await self.db_host.fetchone(query)
+            data = self.db_host.fetchone(query)
             if not data:
                 return False
             return True
@@ -154,7 +154,7 @@ class CesApiDatabase():
             return False
 
 
-    async def _cetp_identity_check_exist_uuid(self, uuid):
+    def _cetp_identity_check_exist_uuid(self, uuid):
         '''
         Check if provided UUID already exists in database. If not then None is returned or if it does then True is returned
         :param uuid: UUID value to be searched in database table
@@ -163,14 +163,14 @@ class CesApiDatabase():
         try:
             # Get uuid for the user based on given id
             query = "select * from host_policy_identity where uuid = '{}'".format(uuid)
-            data = await self.db_host.fetchone(query)
+            data = self.db_host.fetchone(query)
             if not data:
                 return False
             return True
         except:
             return False
 
-    async def _ces_identity_check_exist_uuid(self, uuid):
+    def _ces_identity_check_exist_uuid(self, uuid):
         '''
         Check if provided UUID already exists in database. If not then None is returned or if it does then True is returned
         :param uuid: UUID value to be searched in database table
@@ -179,7 +179,7 @@ class CesApiDatabase():
         try:
             # Get uuid for the user based on given id
             query = "select * from ces_policy_identity where uuid = '{}'".format(uuid)
-            data = await self.db_host.fetchone(query)
+            data = self.db_host.fetchone(query)
             if not data:
                 return False
             return True
@@ -248,7 +248,7 @@ class CesApiDatabase():
     ############################################################
     # Insert Functions
 
-    async def _host_policy_insert_id(self, data):
+    def _host_policy_insert_id(self, data):
         '''
         create sql statement to insert in host_ids according to given parameters. Also calls relevant validation function for fields
         :param kwargs:Dictionary of parameters => fqdn, msisdn, ipv4
@@ -259,7 +259,7 @@ class CesApiDatabase():
             kwargs = Validator._ids_validator(kwargs)
             while (True):
                 unique_id= uuid.uuid1().int >> 64
-                exists_check = await self._host_check_exist_uuid(unique_id)
+                exists_check = self._host_check_exist_uuid(unique_id)
                 if not exists_check:
                     break
             parameters += "('{}',{},{},{},{}),".format(unique_id, kwargs['fqdn'], kwargs['msisdn'], kwargs['ipv4'], kwargs['username'])
@@ -274,14 +274,14 @@ class CesApiDatabase():
         '''
         parameters = ''
         for policy in data:
-            #await self._host_check_exist_user(policy['fqdn'])
+            #self._host_check_exist_user(policy['fqdn'])
             policy = Validator._firewall_policy_validator_filter(policy)
             parameters += "((select uuid from host_ids where fqdn={}),{},{},{}),".format(
             policy['fqdn'], policy['types'], policy['sub_type'], policy['policy_element'])
         return "insert into firewall_policies (uuid, types, sub_type, policy_element) values " + parameters[:-1]
 
 
-    async def _host_policy_insert_cetp_policy_identity(self, data):
+    def _host_policy_insert_cetp_policy_identity(self, data):
         '''
         create sql statement to insert in host_firewall according to given parameters. Also calls relevant validation function for fields
         :param kwargs:Dictionary of parameters => fqdn, types, active, priority, direction, src, dst, sport, dport, protocol, target, comment, raw_data, schedule_start, schedule_end
@@ -291,7 +291,7 @@ class CesApiDatabase():
         for policy in data:
             while (True):
                 unique_id= uuid.uuid1().int >> 64
-                exists_check = await self._cetp_identity_check_exist_uuid(unique_id)
+                exists_check = self._cetp_identity_check_exist_uuid(unique_id)
                 if not exists_check:
                     break
             policy = Validator._cetp_policy_identity_validator(policy)
@@ -300,7 +300,7 @@ class CesApiDatabase():
         return "insert into host_policy_identity (local_fqdn, remote_fqdn, reputation, direction, uuid) values " + parameters[:-1]
 
 
-    async def _host_policy_insert_cetp_policies(self, data):
+    def _host_policy_insert_cetp_policies(self, data):
         '''
         create sql statement to insert in host_firewall according to given parameters. Also calls relevant validation function for fields
         :param kwargs:Dictionary of parameters => fqdn, types, active, priority, direction, src, dst, sport, dport, protocol, target, comment, raw_data, schedule_start, schedule_end
@@ -308,7 +308,7 @@ class CesApiDatabase():
         '''
         parameters = ''
         for policy in data:
-            exists_check = await self._cetp_identity_check_exist_uuid(policy['uuid'])
+            exists_check = self._cetp_identity_check_exist_uuid(policy['uuid'])
             if not exists_check:
                 raise API_ERROR(1005, 'Unique ID does not exists = {}'.format(policy['uuid']))
             policy = Validator._cetp_policies_validator(policy)
@@ -316,7 +316,7 @@ class CesApiDatabase():
         return "insert into host_policies (uuid, types, policy_element) values " + parameters[:-1]
 
 
-    async def _host_policy_insert_ces_policy_identity(self, data):
+    def _host_policy_insert_ces_policy_identity(self, data):
         '''
         create sql statement to insert in ces_policy_identity table according to given parameters. Also calls relevant validation function for fields
         :param kwargs:Dictionary of parameters => protocol, host_ces_id
@@ -326,7 +326,7 @@ class CesApiDatabase():
         for policy in data:
             while (True):
                 unique_id= uuid.uuid1().int >> 64
-                exists_check = await self._ces_identity_check_exist_uuid(unique_id)
+                exists_check = self._ces_identity_check_exist_uuid(unique_id)
                 if not exists_check:
                     break
             policy = Validator._ces_policy_identity_validator(policy)
@@ -334,7 +334,7 @@ class CesApiDatabase():
         return "insert into ces_policy_identity (host_ces_id, protocol, uuid) values " + parameters[:-1]
 
 
-    async def _host_policy_insert_ces_policies(self, data):
+    def _host_policy_insert_ces_policies(self, data):
         '''
         create sql statement to insert in host_firewall according to given parameters. Also calls relevant validation function for fields
         :param kwargs:Dictionary of parameters => fqdn, types, active, priority, direction, src, dst, sport, dport, protocol, target, comment, raw_data, schedule_start, schedule_end
@@ -342,7 +342,7 @@ class CesApiDatabase():
         '''
         parameters = ''
         for policy in data:
-            exists_check = await self._ces_identity_check_exist_uuid(policy['uuid'])
+            exists_check = self._ces_identity_check_exist_uuid(policy['uuid'])
             if not exists_check:
                 raise API_ERROR(1005, 'Unique ID does not exists = {}'.format(policy['uuid']))
             policy = Validator._cetp_policies_validator(policy)
@@ -385,7 +385,7 @@ class CesApiDatabase():
         :param kwargs:Dictionary of parameters => fqdn, types, active, priority, direction, src, dst, sport, dport, protocol, target, comment, raw_data, schedule_start, schedule_end
         :return:sql insert statement or raise exception in case of validation error
         '''
-        #await self._host_check_exist_user(policy['fqdn'])
+        #self._host_check_exist_user(policy['fqdn'])
         data = Validator._firewall_policy_validator_filter(data)
         return "update firewall_policies set uuid=(select uuid from host_ids where fqdn={}),types={}, sub_type={}," \
                "policy_element={} where id={}".format(data['fqdn'],data['types'],data['sub_type'], data['policy_element'], id)
@@ -552,7 +552,7 @@ class CesApiDatabase():
     ############################################################
     # Policy Retrieval By CES
 
-    async def firewall_policy_user_get(self, id_type, id_value, policy_name=None, format=False):
+    def firewall_policy_user_get(self, id_type, id_value, policy_name=None, format=False):
         '''
         Return specific user policy or all of them
         :param id_type: FQDN or MSISDN or other id types
@@ -563,7 +563,7 @@ class CesApiDatabase():
 
         # Get uuid for the host as key to other tables and to check if the user exists with the credentials
         # retrieves = uuid,fqdn,msisdn,ipv4
-        host_ids = await self._host_get_user_ids(id_type, id_value)
+        host_ids = self._host_get_user_ids(id_type, id_value)
 
         if policy_name and str(policy_name) not in ['ID', 'GROUP', 'CARRIERGRADE', 'CIRCULARPOOL', 'SFQDN', 'FIREWALL']:
             error = "Policy Name not supported = {}".format(policy_name)
@@ -572,13 +572,13 @@ class CesApiDatabase():
         # Calling function to create SQL query to retrieve Policies. Then executing that query in SQL-Client and formatting returned policies
         query = self._firewall_policy_sql_query_get(kwargs)
         #print (query)
-        result = await self.db_host.fetchall(query)
+        result = self.db_host.fetchall(query)
         if not format:
             result = self.formatting_get_firewall_policies(result,host_ids)
         return result
 
 
-    async def host_cetp_policy_get(self, local_fqdn, remote_fqdn, direction, policy_name):
+    def host_cetp_policy_get(self, local_fqdn, remote_fqdn, direction, policy_name):
         '''
         Retrieving Host policies of a user
         :param local_fqdn: Local Fqdn (Value is compulsory)
@@ -592,12 +592,12 @@ class CesApiDatabase():
         kwargs=locals()
         query= self._cetp_sql_query_get(kwargs)
         #print (query)
-        data = await self.db_host.fetchall(query)
+        data = self.db_host.fetchall(query)
         result = self.formatting_get_cetp_policies(data)
         return result
 
 
-    async def ces_policy_get(self, ces_id, protocol):
+    def ces_policy_get(self, ces_id, protocol):
         '''
         Retrieving Host policies of a user
         :param local_fqdn: Local Fqdn (Value is compulsory)
@@ -611,7 +611,7 @@ class CesApiDatabase():
         kwargs=locals()
         query= self._ces_sql_query_get(kwargs)
         #print(query)
-        data = await self.db_host.fetchall(query)
+        data = self.db_host.fetchall(query)
         result = self.formatting_get_cetp_policies(data)
         return result
 
@@ -627,14 +627,14 @@ class CesApiDatabase():
     # Policy Retrieval for Management Purpose
 
 
-    async def host_policy_get(self, table_name, query_parameters, id_instance=None):
+    def host_policy_get(self, table_name, query_parameters, id_instance=None):
         """ Return a list of All policies in one table or return specific row of one table if ID is provided """
         if not table_name or str(table_name) not in ['CES_POLICIES', 'CES_POLICY_IDENTITY', 'HOST_POLICIES', 'HOST_POLICY_IDENTITY', 'FIREWALL', 'ID']:
             error = "Table Type not supported = {}".format(table_name)
             raise API_ERROR(1001, error)
         query = self._host_policy_get(table_name, query_parameters, id_instance)
         #print (query)
-        data = await self.db_host.fetchall(query)
+        data = self.db_host.fetchall(query)
         data=[list(x) for x in data]
         for i in range (0,len(data)):
             for j in range (0,len(data[i])):
@@ -644,7 +644,7 @@ class CesApiDatabase():
 
 
 
-    async def host_policy_insert(self, table_name, data):
+    def host_policy_insert(self, table_name, data):
         """ Insert User Policy in table or return exception in case of validation error or other errors """
         # Check if table name is provided under label of policy_name
         if str(table_name) not in ['CES_POLICIES', 'CES_POLICY_IDENTITY', 'HOST_POLICIES', 'HOST_POLICY_IDENTITY', 'FIREWALL', 'ID']:
@@ -655,16 +655,16 @@ class CesApiDatabase():
         if table_name == 'FIREWALL':
             query = get_function(data)
         else:
-            query = await get_function(data)
+            query = get_function(data)
         #print (query)
-        data = await self.db_host.execute(query)
-        #await self._update_timestamp(data['fqdn'], policy_name.upper())
+        data = self.db_host.execute(query)
+        #self._update_timestamp(data['fqdn'], policy_name.upper())
         return data
 
 
 
 
-    async def host_policy_update(self, table_name, data, id_instance):
+    def host_policy_update(self, table_name, data, id_instance):
         """ Insert User Policy in table or return exception in case of validation error or other errors """
         # Check if table name is provided under label of policy_name
         if str(table_name) not in ['CES_POLICIES', 'CES_POLICY_IDENTITY', 'HOST_POLICIES', 'HOST_POLICY_IDENTITY', 'FIREWALL', 'ID']:
@@ -674,8 +674,8 @@ class CesApiDatabase():
         get_function = self._host_policy_functions[table_name]['update']
         query = get_function(data, id_instance)
         #print (query)
-        data = await self.db_host.execute(query)
-        #await self._update_timestamp(data['fqdn'], policy_name.upper())
+        data = self.db_host.execute(query)
+        #self._update_timestamp(data['fqdn'], policy_name.upper())
         return data
 
 
@@ -686,7 +686,7 @@ class CesApiDatabase():
     # Bootstrap Policy Functions
 
 
-    async def bootstrap_get_policies_ces(self, policy_type):
+    def bootstrap_get_policies_ces(self, policy_type):
         # Fetch the bootstrap policies and format them to use for CES
 
         # Use dictionary for returning policies
@@ -703,7 +703,7 @@ class CesApiDatabase():
         else:
             query = self._bootstrap_get()
         #print(query)
-        data = await self.db_bootstrap.fetchall(query)
+        data = self.db_bootstrap.fetchall(query)
         processed_data = self._host_bootstrap_postprocess(data)
         # Add process data to results
         result_d.update(processed_data)
@@ -711,7 +711,7 @@ class CesApiDatabase():
 
 
 
-    async def bootstrap_get_policies(self, policy_type, id=None):
+    def bootstrap_get_policies(self, policy_type, id=None):
         # Fetch the bootstrap policies
         if id:
             query = self._bootstrap_get("where id={}".format(id))
@@ -723,23 +723,23 @@ class CesApiDatabase():
             #print('*******2222****')
             query = self._bootstrap_get(' ')
         #print(query)
-        data = await self.db_bootstrap.fetchall(query)
+        data = self.db_bootstrap.fetchall(query)
         return data
 
 
-    async def bootstrap_insert(self, data):
+    def bootstrap_insert(self, data):
         """ Insert Policy in bootstrap table or return exception in case of validation error or other errors """
 
         statement = self._insert_bootstrap(data)
-        data = await self.db_bootstrap.execute(statement)
+        data = self.db_bootstrap.execute(statement)
         return data
 
 
-    async def bootstrap_update(self, data, id_instance):
+    def bootstrap_update(self, data, id_instance):
         """ edit Policy in bootstrap table or return exception in case of validation error or other errors """
 
         statement = self._update_bootstrap(data, id_instance)
-        data = await self.db_bootstrap.execute(statement)
+        data = self.db_bootstrap.execute(statement)
         return data
 
 
@@ -749,7 +749,7 @@ class CesApiDatabase():
     # Delete Policies from Host Policies database
 
 
-    async def policy_delete(self, policy_name, query_parameters, id_instance=None):
+    def policy_delete(self, policy_name, query_parameters, id_instance=None):
         """ Insert User Policy in table or return exception in case of validation error or other errors """
 
         # Check if table name is provided under label of policy_name
@@ -772,12 +772,12 @@ class CesApiDatabase():
             parameters = parameters[:-4]
         query = self._host_policy_delete(table_mapping[policy_name], parameters)
         #print (query)
-        data = await self.db_host.execute(query)
+        data = self.db_host.execute(query)
         return data
 
 
 
-    async def host_bootstrap_delete(self, id=None):
+    def host_bootstrap_delete(self, id=None):
         """ Delete single or multiple policies or complete table or return exception in case of validation error or other errors """
         if id:
             if type(id) is list or type(id) is tuple:
@@ -791,7 +791,7 @@ class CesApiDatabase():
         else:
             query = self._delete_bootstrap()
         #print (query)
-        data = await self.db_bootstrap.execute(query)
+        data = self.db_bootstrap.execute(query)
         return data
 
 
@@ -802,7 +802,7 @@ class CesApiDatabase():
     # Extra Functionalities
 
 
-    async def host_column_names(self, tablename):
+    def host_column_names(self, tablename):
         '''
         Get the column names of table for GUI
         :param database :database to retrieve tables from
@@ -813,7 +813,7 @@ class CesApiDatabase():
             error = "Table Type not supported = {}".format(tablename)
             raise API_ERROR(1001, error)
         statement = "SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = n'{}'".format(table_mapping[tablename])
-        data = await self.db_host.fetchall(statement)
+        data = self.db_host.fetchall(statement)
         return data
 
 

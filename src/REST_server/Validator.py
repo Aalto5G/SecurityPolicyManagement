@@ -296,7 +296,7 @@ class Validator():
     ###################################################################################
 
 
-    def _ids_validator(kwargs):
+    def _ids_validator(**kwargs):
         '''
         # Validate input ids for function host_ids. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -310,7 +310,7 @@ class Validator():
         return kwargs
 
 
-    def _firewall_policy_validator_old(kwargs):
+    def _firewall_policy_validator_old(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -336,7 +336,7 @@ class Validator():
         kwargs['priority'] = 10 if 'priority' not in kwargs or not kwargs['priority'] else Validator._integer_validation(kwargs['priority'])
         return kwargs
 
-    def _firewall_policy_validator_filter(kwargs):
+    def _firewall_policy_validator_filter(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -363,7 +363,7 @@ class Validator():
         return kwargs
 
 
-    def _cetp_policy_identity_validator(kwargs):
+    def _cetp_policy_identity_validator(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -377,7 +377,7 @@ class Validator():
         return kwargs
 
 
-    def _cetp_policies_validator(kwargs):
+    def _cetp_policies_validator(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -396,7 +396,7 @@ class Validator():
         return kwargs
 
 
-    def _ces_policy_identity_validator(kwargs):
+    def _ces_policy_identity_validator(**kwargs):
         '''
         # Validate input policy for function ces policy identity. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -412,7 +412,7 @@ class Validator():
         return kwargs
 
 
-    def _firewall_firewall_policy_validator(kwargs):
+    def _firewall_firewall_policy_validator(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -426,7 +426,7 @@ class Validator():
         return kwargs
 
 
-    def _firewall_group_policy_validator(kwargs):
+    def _firewall_group_policy_validator(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -441,7 +441,7 @@ class Validator():
         return kwargs
 
 
-    def _firewall_circularpool_policy_validator(kwargs):
+    def _firewall_circularpool_policy_validator(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -456,7 +456,7 @@ class Validator():
         return kwargs
 
 
-    def _firewall_carriergrade_policy_validator(kwargs):
+    def _firewall_carriergrade_policy_validator(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -471,7 +471,7 @@ class Validator():
         return kwargs
 
 
-    def _firewall_sfqdn_policy_validator(kwargs):
+    def _firewall_sfqdn_policy_validator(**kwargs):
         '''
         # Validate input policy for function Firewall. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -504,7 +504,7 @@ class Validator():
         return kwargs
 
 
-    def _bootstrap_validator(kwargs):
+    def _bootstrap_validator(**kwargs):
         '''
         # Validate input bootstrap policy for bootstrap table. Put quotation marks at the ends to validate the policies to
         insert in table. Also set Null value for empty fiels
@@ -524,7 +524,7 @@ class Validator():
         kwargs['types'] = 'Null' if 'types' not in kwargs or not kwargs['types'] else Validator._adding_quotes_(kwargs['types'])
         return kwargs
 
-    def cetp_get_policies(kwargs):
+    def cetp_get_policies(**kwargs):
         '''
         # Validate parameters to formulate CETP SQL get query for a host
         :param kwargs: Dictionary of all the query parameters received from client
